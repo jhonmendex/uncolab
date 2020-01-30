@@ -1,0 +1,52 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT
+
+(https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+#menu-toggle {
+    color: white;
+    position: fixed;
+    top: 50%;
+    right: -45.75px;
+    z-index: 9;
+    transform: rotate(90deg);
+    background: #a7142c;
+}
+
+#wrapper-chat {
+    padding-left: 250px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper-chat.toggled {
+    padding-left: 0px;
+}
+
+#sidebar-wrapper-chat {
+    position: fixed;
+    right: 250px;
+    width: 50%;
+    height: 53%;
+    z-index: 9;
+    margin-right: -250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background:
+    rgba(84, 88, 90,0.1);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    bottom: 1px;
+}
+
+#wrapper-chat.toggled #sidebar-wrapper-chat {
+    width: 0px;
+}
+
