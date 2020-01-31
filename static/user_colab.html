@@ -1,10 +1,127 @@
- <div id="wrapper-chat" class="toggled">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper-chat">
+<div id="wrapper-chat">
+    <!-- Sidebar <div id="wrapper-chat" class="toggled"> -->
+    <div id="sidebar-wrapper-chat">
         <!-- contenido del chat -->
+        <div id="uncolabChat_header">
+            <div id="uncolabChat_self_container">
+                <div id="uncolabChat_self_right">
+                    <div id="uncolabChat_notification" style="padding-top:6px;">
+                        <i class="fa fa-bell"></i>
+                    </div>
+                </div>
+                <div id="uncolabChat_self_left">
+                    <div id="uncolabChat_self">
+                        <span class="uncolabChat_userscontentavatar">
+                            <img class="uncolabChat_userscontentavatarimage"
+                                 src="//fast.cometondemand.net/images/noavatar.png"
+                                 onerror="this.onerror=null;this.src='//fast.cometondemand.net/admin/images/pixel.png'">
+                        </span>
+                        <div id="uncolabChat_selfDetails">
+                            <div class="uncolabChat_userdisplayname">Pedro</div>
+                            <span class="uncolabChat_userscontentdot uncolabChat_available"></span>
+                            <div class="selfstatus uncolabChat_userdisplaystatus">I'm online</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /#sidebar-wrapper -->
- </div>
-    <!-- /#wrapper -->
+        <div id="main_containerChat">
+            <div id="uncolabChat_leftbar">
+                <ul class="nav nav-tabs" id="chatTab" role="tablist">
+                    <li class="nav-item nav-tab-chat">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                           aria-controls="home" aria-selected="true">Programmers</a>
+                    </li>
+                    <li class="nav-item nav-tab-chat">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                           aria-controls="profile" aria-selected="false">Teachers</a>
+                    </li>
+                    <li class="nav-item nav-tab-chat">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                           aria-controls="contact" aria-selected="false">Groups</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="uncolabChat-users">
+                            <div id="uncolabChat_userlist_66" class="uncolabChat_userlist" amount="0">
+                                <span class="uncolabChat_userscontentavatar">
+                                    <img class="uncolabChat_userscontentavatarimage" src="//fast.cometondemand.net/images/noavatar.png">
+                                </span>
+                                <div class="uncolabChat_chatboxDisplayDetails">
+                                    <div class="uncolabChat_userdisplayname" title="Alex">Nury</div>
+                                    <span class="uncolabChat_userscontentdot uncolabChat_desktop"></span>
+                                    <div class="uncolabChat_userdisplaystatus">I'm available</div>
+                                </div>
+                                <div class="uncolabChat_msgcounttext" style="display:none;">0</div>
+                            </div>
+                        </div>
+                        <div class="uncolabChat-users">
+                            <div id="uncolabChat_userlist_66" class="uncolabChat_userlist" amount="0">
+                                <span class="uncolabChat_userscontentavatar">
+                                    <img class="uncolabChat_userscontentavatarimage" src="//fast.cometondemand.net/images/noavatar.png">
+                                </span>
+                                <div class="uncolabChat_chatboxDisplayDetails">
+                                    <div class="uncolabChat_userdisplayname" title="Alex">Maria</div>
+                                    <span class="uncolabChat_userscontentdot uncolabChat_desktop"></span>
+                                    <div class="uncolabChat_userdisplaystatus">I'm available</div>
+                                </div>
+                                <div class="uncolabChat_msgcounttext" style="display:none;">0</div>
+                            </div>
+                        </div>
+                        <div class="uncolabChat-users">
+                            <div id="uncolabChat_userlist_66" class="uncolabChat_userlist" amount="0">
+                                <span class="uncolabChat_userscontentavatar">
+                                    <img class="uncolabChat_userscontentavatarimage" src="//fast.cometondemand.net/images/noavatar.png">
+                                </span>
+                                <div class="uncolabChat_chatboxDisplayDetails">
+                                    <div class="uncolabChat_userdisplayname" title="Alex">Juan</div>
+                                    <span class="uncolabChat_userscontentdot uncolabChat_desktop"></span>
+                                    <div class="uncolabChat_userdisplaystatus">I'm available</div>
+                                </div>
+                                <div class="uncolabChat_msgcounttext" style="display:none;">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                         <div class="uncolabChat-users">
+                            <div id="uncolabChat_userlist_66" class="uncolabChat_userlist" amount="0">
+                                <span class="uncolabChat_userscontentavatar">
+                                    <img class="uncolabChat_userscontentavatarimage" src="//fast.cometondemand.net/images/noavatar.png">
+                                </span>
+                                <div class="uncolabChat_chatboxDisplayDetails">
+                                    <div class="uncolabChat_userdisplayname" title="Alex">Jhon</div>
+                                    <span class="uncolabChat_userscontentdot uncolabChat_desktop"></span>
+                                    <div class="uncolabChat_userdisplaystatus">I'm available</div>
+                                </div>
+                                <div class="uncolabChat_msgcounttext" style="display:none;">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                         <div class="uncolabChat-users">
+                            <div id="uncolabChat_userlist_66" class="uncolabChat_userlist" amount="0">
+                                <span class="uncolabChat_userscontentavatar">
+                                    <img class="uncolabChat_userscontentavatarimage" src="//fast.cometondemand.net/layouts/embedded/images/group.svg" style="background:#666">
+                                </span>
+                                <div class="uncolabChat_chatboxDisplayDetails">
+                                    <div class="uncolabChat_userdisplayname" title="Alex">Piramide-group</div>
+                                    <span class="uncolabChat_userscontentdot uncolabChat_desktop"></span>
+                                    <div class="uncolabChat_userdisplaystatus">I'm available</div>
+                                </div>
+                                <div class="uncolabChat_msgcounttext" style="display:none;">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="uncolabChat_righttab">
 
- 
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
