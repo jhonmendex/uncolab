@@ -3,7 +3,7 @@ $(function(){
    //$("#wrapper-chat").prop("hidden", true);
     function appendChatButton() {
         // this function add button in the frontend task
-        const html = "<br><button onclick='appendChat()' id='menu-toggle' class='btn btn-secondary'><i id=\"toggleIcon\" class=\"fa fa-angle-double-down\"></i> Collaboration</button>";
+        const html = "<br><button onclick='appendChat()' id='menu-toggle' class='btn btn-secondary'><i id=\"toggleIcon\" class=\"fa fa-angle-double-up\"></i> Collaboration</button>";
         let task_panel = $('#task');
         task_panel.append(html);
     }
@@ -12,7 +12,7 @@ $(function(){
 
      function appendChat(){
          var isIE11 = !!navigator.userAgent.match(/Trident.*rv\:11\./);
-         $("#toggleIcon").toggleClass("fa fa-angle-double-down fa fa-angle-double-up")
+         $("#toggleIcon").toggleClass("fa fa-angle-double-up fa fa-angle-double-down")
          $("#wrapper-chat").toggleClass("toggled");
 
          if(isIE11){

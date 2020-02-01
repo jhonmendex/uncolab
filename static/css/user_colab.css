@@ -157,7 +157,7 @@
     background: #97c846;
 }
 
-.uncolabChat_userlist:hover{
+.uncolabChat_userlist:hover {
     background: #f2f2f2;
 }
 
@@ -176,6 +176,8 @@
 
 #uncolabChat_righttab {
     overflow: hidden;
+    background: #fff;
+    height: 100%;
 }
 
 #chatTab {
@@ -222,4 +224,185 @@
     background: #ffffff;
     color: #94b43b;
     margin-top: 5px;
+}
+
+.uncolabChat_righttab {
+    background: #fff;
+}
+
+.uncolabChat_userscontentavatarsmall {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: block;
+    float: left;
+    object-fit: cover;
+}
+
+.uncolabChat_chatboxmessage:after, .uncolabChat_istypingbox:before, .uncolabChat_istypingbox:after {
+    border-radius: 67px / 44px;
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+.uncolabChat_chatboxmessage:not(.uncolabChat_self), .uncolabChat_istypingbox {
+    color: #8C8B92;
+    font-family: inherit;
+    font-size: 13px;
+    word-break: normal;
+    margin: 12px 0px 12px 90px;
+    padding: 8px 18px;
+    border-radius: 25px;
+    background: #e6e9ed;
+    position: relative;
+    float: left;
+    max-width: 415px;
+}
+
+.uncolabChat_ts:not(.uncolabChat_self_ts) {
+    cursor: default;
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 5px;
+    position: absolute;
+    bottom: 11px;
+    margin-right: -50px;
+}
+
+.uncolabChat_self_ts {
+    font-size: 10px;
+    margin-top: 40px;
+    position: absolute;
+    margin-left: -34px;
+}
+
+.uncolabChat_ts {
+    cursor: default;
+    font-size: 10px;
+    opacity: 0.3;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    bottom: 11px;
+    margin-left: -50px;
+}
+
+.uncolabChat_chatboxmessage.uncolabChat_self {
+    font-family: inherit;
+    font-size: 14px;
+    border-radius: 25px;
+    padding: 11px 18px;
+    background: #56a8e3;
+    margin: 12px 15px 12px 3px;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+    float: right;
+    max-width: 500px;
+}
+
+.uncolabChat_chatboxmessage:after, .uncolabChat_istypingbox:after {
+    border: 8px solid transparent;
+    border-bottom-color: #e6e9ed;
+    bottom: 5px;
+    left: -5px;
+}
+
+.uncolabChat_self:before {
+    border-bottom-color: #56a8e3;
+    border-radius: 20px / 10px;
+    left: auto;
+    right: -7px;
+}
+
+.uncolabChat_chatboxmessage:before, .uncolabChat_chatboxmessage:after, .uncolabChat_istypingbox:before, .uncolabChat_istypingbox:after {
+    border-radius: 20px / 10px;
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+.uncolabChat_messagebox {
+    min-height: 44px;
+    height: auto;
+    display: inline-block;
+    float: right;
+    position: relative;
+    max-width: 90%;
+}
+
+.uncolabChat_messagebox:not(.cometchat_messagebox_self) {
+    min-height: 44px;
+    height: auto;
+    float: left;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+span.uncolabChat_cr_other_avatar {
+    position: absolute !important;
+    margin-top: 15px !important;
+    margin-left: 20px !important;
+}
+
+.uncolabChat_chatboxmessage:not(.uncolabChat_self), .uncolabChat_istypingbox {
+    color: #8C8B92;
+    font-family: inherit;
+    font-size: 13px;
+    word-break: normal;
+    margin: 12px 0px 12px 60px;
+    padding: 11px 18px;
+    border-radius: 25px;
+    background: #e6e9ed;
+    position: relative;
+    float: left;
+    max-width: 415px;
+}
+
+.uncolabChat_chatboxmessage, .uncolabChat_istypingbox {
+    background: #56a8e3;
+    border-radius: 20px;
+    clear: both;
+    float: left;
+    margin-bottom: 20px;
+    padding: 8px 30px;
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.uncolabChat_float_l {
+    float: left;
+}
+
+.uncolabChat_self:after {
+    border-bottom-color: #56a8e3;
+    border-radius: 20px / 10px;
+    left: auto;
+    right: -4px;
+}
+
+.uncolabChat_chatboxmessage.uncolabChat_self {
+    font-family: inherit;
+    font-size: 14px;
+    border-radius: 25px;
+    padding: 11px 18px;
+    background: #56a8e3;
+    margin: 12px 20px 12px 3px;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+    float: right;
+    max-width: 500px;
+}
+
+.uncolabChat_chatboxmessagecontent {
+    margin: 0px !important;
+}
+
+.uncolabChat_messagebox_self {
+    float: right;
 }
