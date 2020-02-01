@@ -406,3 +406,39 @@ span.uncolabChat_cr_other_avatar {
 .uncolabChat_messagebox_self {
     float: right;
 }
+
+#uncolabChat_tabinputcontainer {
+    border-top: 1px solid #D1D1D1;
+    background: rgb(238, 238, 238);
+    padding-top: 13px;
+    bottom: 0px;
+    z-index: 10000000;
+    width: 100%;
+}
+
+#downplugins {
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
+}
+
+#uncolabChat_textarea {
+    height: 20px;
+    margin-left: 10px;
+    resize: none;
+    padding: 8px 30px 4px 10px;
+    border: 1px solid #D1D1D1;
+    margin-bottom: 7px;
+    width: 60%;
+    border-radius: 4px;
+    font-size: 14px;
+    overflow-y: hidden;
+    background: #ffffff;
+    white-space: break-spaces;
+}
+
+[contentEditable="true"]:empty::before {
+    content: attr(placeholder);
+    color: #aaaaaa !important;
+}
