@@ -2,12 +2,14 @@ import os
 
 from inginious.frontend.plugins.utils import create_static_resource_page, read_file
 
+from inginious.frontend.plugins.un_colab.constants import _REACT_BASE_URL, _REACT_BUILD_FOLDER, _BASE_STATIC_FOLDER, _BASE_STATIC_URL
+from .pages.chat_page import ChatPage
+
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
-_UNCOLAB_HTML_FILE = "user_colab.html"
+_UNCOLAB_HTML_FILE = "index.html"
 
 
 def init(plugin_manager, course_factory, client, config):
-    plugin_manager.add_page(r'/un_colab/static/(.*)', create_static_resource_page(_static_folder_path))
 
     use_minified = config.get("use_minified", False)
     if use_minified:
@@ -16,5 +18,16 @@ def init(plugin_manager, course_factory, client, config):
     else:
         plugin_manager.add_hook("javascript_footer", lambda: "/un_colab/static/js/user_colab.js")
         plugin_manager.add_hook("css", lambda: "/un_colab/static/css/user_colab.css")
-    plugin_manager.add_hook("additional_body_html",
-                            lambda: read_file(_static_folder_path, _UNCOLAB_HTML_FILE))
+
+    def chat_course_menu_hook(course,task, template_helper):
+        return """
+                <button type="button" onclick="appendChat()" id="menu-toggle" class="btn btn-secondary"><i id="toggleIcon" class="fa-angle-double-down fa"></i> Collaboration</button>""".format(course_id=course.get_id())
+
+    plugin_manager.add_page(r'/un_colab/static/(.*)', create_static_resource_page(_static_folder_path))
+    plugin_manager.add_hook("additional_body_html", lambda: read_file(_static_folder_path, _UNCOLAB_HTML_FILE))
+
+    plugin_manager.add_page(_REACT_BASE_URL + r'(.*)', create_static_resource_page(_REACT_BUILD_FOLDER))
+    plugin_manager.add_page(_BASE_STATIC_URL + r'(.*)', create_static_resource_page(_BASE_STATIC_FOLDER))
+
+    plugin_manager.add_hook('task_menu', chat_course_menu_hook)
+    plugin_manager.add_page('/un_colab', ChatPage)
