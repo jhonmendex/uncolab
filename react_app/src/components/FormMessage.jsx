@@ -3,23 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class FormMessage extends Component {
   render() {
     return (
-      <form
-        action=""
-        onSubmit={this.props.onSubmit}
-        id="uncolabChat_tabinputcontainer"
-      >
+      <div id="uncolabChat_tabinputcontainer">
         <div id="downplugins">
           <input
             id="uncolabChat_textarea"
             name="message"
             onChange={this.props.onChange}
-            type="text"
-            value={this.props.formValues.message}
+            value={this.props.inputValues}
             placeholder="Enter your help"
+            onKeyPress={this.props.onKeyPress}
           />
-          <FontAwesomeIcon className="btn_enter" icon="angle-double-right" />
+          <FontAwesomeIcon className="btn_enter" icon="arrow-right" />
         </div>
-      </form>
+      </div>
     );
   }
 }

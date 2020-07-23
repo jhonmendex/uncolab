@@ -4,6 +4,7 @@ import {
   faAngleDoubleRight,
   faCoffee,
   faUser,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser, faCheckSquare, faAngleDoubleRight, faCoffee);
+library.add(faUser, faCheckSquare, faAngleDoubleRight, faArrowRight, faCoffee);

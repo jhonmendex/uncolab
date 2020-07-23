@@ -63,7 +63,7 @@ footer,
 .uncolabChat_botscontentavatar {
   display: block;
   float: left;
-  left: 6px;
+  left: 11px;
   top: 2px;
   position: relative;
 }
@@ -251,21 +251,11 @@ footer,
   max-width: 415px;
 }
 
-.uncolabChat_ts:not(.uncolabChat_self_ts) {
-  cursor: default;
-  font-size: 10px;
-  font-weight: bold;
-  margin-left: 5px;
-  position: absolute;
-  bottom: 11px;
-  margin-right: -50px;
-}
-
 .uncolabChat_self_ts {
-  font-size: 10px;
-  margin-top: 40px;
-  position: absolute;
-  margin-left: -34px;
+  font-size: 8px;
+  bottom: -70px;
+  right: 20px;
+  position: relative;
 }
 
 .uncolabChat_ts {
@@ -400,7 +390,8 @@ span.uncolabChat_cr_other_avatar {
   margin: 0px !important;
 }
 
-.uncolabChat_messagebox_self {
+.uncolabChat_messagebox_self,
+.uncolabChat_messagebox_self span {
   float: right;
 }
 
@@ -448,10 +439,11 @@ span.uncolabChat_cr_other_avatar {
 }
 
 .btn_enter {
-  font-size: 2em;
+  font-size: 1.5em;
   color: #666;
   align-items: center;
   display: flex;
+  margin-top: 8px;
 }
 
 .chat-content {
@@ -462,4 +454,30 @@ span.uncolabChat_cr_other_avatar {
   padding-top: 10px;
   max-height: 78vh;
   padding-bottom: 20px;
+}
+
+.loadding-chat {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  margin: 0 auto;
+}
+.wrapper-welcome {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper-welcome h4,
+.wrapper-welcome p {
+  padding: 10px 5px;
+  margin-top: 10px;
+  font-family: inherit;
+  text-align: center;
+}
+
+.wrapper-welcome img {
+  max-width: 1200px;
+  width: auto;
+  padding: 10px;
+  height: 43.5%;
+  box-shadow: 0px 0px 9px -7px #000;
 }

@@ -1,86 +1,109 @@
 import React, { Component } from "react";
 import { myFirestore } from "../config/MyFirebase";
-
+import ReactLoading from "react-loading";
 import HeaderChat from "../components/HeaderChat";
 import UserList from "../components/UserList";
 import Messages from "../components/Messages";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/ChatWrapper.css";
-// <!-- Sidebar <div id="wrapper-chat" class="toggled"> -->
+import { AppString } from "../config/Constants";
 
 class ChatWrapper extends Component {
   constructor() {
     super();
     this.state = {
-      form: {
-        message: "",
-      },
-      messages: [],
+      isLoading: true,
+      inputValue: "",
+      users: [],
+      currentPairUser: null,
     };
+    this.currentUserId = localStorage.getItem(AppString.ID);
+    this.currentUserNickname = localStorage.getItem(AppString.NICKNAME);
   }
 
   componentDidMount() {
-    this.getListMessages();
+    this.verifyUser();
+    this.getListUser();
   }
-  getListMessages = () => {
-    myFirestore.collection("messages").onSnapshot(
-      (snap) => {
-        this.setState({
-          messages: snap.docs.map((doc) => {
-            return { id: doc.id, data: doc.data() };
-          }),
+
+  verifyUser() {
+    myFirestore
+      .collection(AppString.USERS)
+      .where(AppString.NICKNAME, "==", "jhonmendex")
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          localStorage.setItem(AppString.ID, doc.id);
+          localStorage.setItem(AppString.NICKNAME, doc.data().nickname);
         });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      })
+      .catch(function (error) {
+        console.log("Error getting documents: ", error);
+      });
+  }
+
+  getListUser = () => {
+    myFirestore
+      .collection(AppString.USERS)
+      .orderBy("nickname")
+      .onSnapshot(
+        (snap) => {
+          this.setState({
+            isLoading: false,
+            users: snap.docs.map((doc) => {
+              return { id: doc.id, data: doc.data() };
+            }),
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  getPairUser = (data) => {
+    this.setState({ currentPairUser: data });
   };
 
   updateMessage = (e) => {
     this.setState({
-      form: {
-        ...this.state.form,
-        [e.target.name]: e.target.value,
-      },
+      inputValue: e.target.value,
     });
-    console.log(this.state.form);
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      form: {
-        message: "",
-      },
-    });
-
-    myFirestore
-      .collection("messages")
-      .add({
-        mensaje: this.state.form.message,
-      })
-      .then(function (docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-      });
+  onKeyboardPress = (e) => {
+    if (e.key === "Enter") {
+      this.child.onSendMessage(this.state.inputValue, 0);
+      this.setState({ inputValue: "" });
+    }
   };
 
   render() {
-    const { messages, form } = this.state;
+    const { inputValue, users } = this.state;
     return (
       <>
-        <HeaderChat />
+        {this.state.isLoading ? (
+          <div className="viewLoading">
+            <ReactLoading
+              type={"bubbles"}
+              color={"#94b43b"}
+              height={"10%"}
+              width={"10%"}
+              className="loadding-chat"
+            />
+          </div>
+        ) : null}
+        <HeaderChat currentUser={this.currentUserNickname} />
         <div id="main_containerChat" className="row">
-          <UserList />
+          <UserList users={users} getPairUser={this.getPairUser} />
           <Messages
             onChange={this.updateMessage}
-            onSubmit={this.handleSubmit}
-            formValues={form}
-            messages={messages}
+            inputValues={inputValue}
+            onKeyPress={this.onKeyboardPress}
+            currentPairUser={this.state.currentPairUser}
+            ref={(element) => {
+              this.child = element;
+            }}
           />
         </div>
       </>

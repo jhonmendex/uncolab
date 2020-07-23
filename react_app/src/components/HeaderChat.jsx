@@ -21,7 +21,9 @@ class HeaderChat extends Component {
                   />
                 </span>
                 <div id="uncolabChat_selfDetails">
-                  <div className="uncolabChat_userdisplayname">Pedros</div>
+                  <div className="uncolabChat_userdisplayname">
+                    {this.props.currentUser}
+                  </div>
                   <span className="uncolabChat_userscontentdot uncolabChat_available"></span>
                   <div className="selfstatus uncolabChat_userdisplaystatus">
                     I'm online
