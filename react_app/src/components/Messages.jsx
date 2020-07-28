@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import FormMessage from "../components/FormMessage";
 import ListMessage from "../components/ListMessage";
-import welcomeImg from "../images/programadoresynovatos.jpg";
 import { AppString } from "../config/Constants";
 import { myFirestore } from "../config/MyFirebase";
 import moment from "moment";
@@ -12,9 +11,6 @@ class Messages extends Component {
     this.state = {
       isLoading: false,
     };
-
-    this.currentUserId = localStorage.getItem(AppString.ID);
-    this.currentUserNickname = localStorage.getItem(AppString.NICKNAME);
     this.groupChatId = null;
     this.listMessage = [];
     this.removeListener = null;
@@ -34,7 +30,7 @@ class Messages extends Component {
     const timestamp = moment().valueOf().toString();
 
     const itemMessage = {
-      idFrom: this.currentUserId,
+      idFrom: this.props.currentUserId,
       idTo: this.props.currentPairUser.id,
       timestamp: timestamp,
       content: content.trim(),
@@ -70,12 +66,12 @@ class Messages extends Component {
     }
     this.listMessage.length = 0;
     if (
-      this.hashString(this.currentUserId) <=
+      this.hashString(this.props.currentUserId) <=
       this.hashString(this.props.currentPairUser.id)
     ) {
-      this.groupChatId = `${this.currentUserId}-${this.props.currentPairUser.id}`;
+      this.groupChatId = `${this.props.currentUserId}-${this.props.currentPairUser.id}`;
     } else {
-      this.groupChatId = `${this.props.currentPairUser.id}-${this.currentUserId}`;
+      this.groupChatId = `${this.props.currentPairUser.id}-${this.props.currentUserId}`;
     }
 
     this.removeListener = myFirestore
@@ -87,6 +83,7 @@ class Messages extends Component {
           snapshot.docChanges().forEach((change) => {
             if (change.type === AppString.DOC_ADDED) {
               this.listMessage.push(change.doc.data());
+              this.child.scrollToMyRef();
             }
           });
           this.setState({ isLoading: false });
@@ -107,7 +104,7 @@ class Messages extends Component {
                 ref={(element) => {
                   this.child = element;
                 }}
-                currentUser={this.currentUserId}
+                currentUser={this.props.currentUserId}
                 currentPairUser={this.props.currentPairUser}
                 messages={this.listMessage}
               />
@@ -121,10 +118,13 @@ class Messages extends Component {
             <>
               <div className="wrapper-welcome">
                 <h4>
-                  <strong>{this.currentUserNickname} </strong>
+                  <strong>{this.props.currentUserNickname} </strong>
                   Bienvenido a programadores y novatos
                 </h4>
-                <img src={welcomeImg} alt="programadores y novatos" />
+                <img
+                  src={AppString.PROGRAMMERS_NOOBS_IMAGE}
+                  alt="programadores y novatos"
+                />
                 <p>
                   <strong>PLaS </strong>
                   <i>Research Group Programming Languages and Systems</i>

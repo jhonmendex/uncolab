@@ -16,9 +16,9 @@ class ChatWrapper extends Component {
       inputValue: "",
       users: [],
       currentPairUser: null,
+      currentUserId: null,
+      currentUserNickname: null,
     };
-    this.currentUserId = localStorage.getItem(AppString.ID);
-    this.currentUserNickname = localStorage.getItem(AppString.NICKNAME);
   }
 
   componentDidMount() {
@@ -26,19 +26,48 @@ class ChatWrapper extends Component {
     this.getListUser();
   }
 
+  componentWillUnmount() {
+    localStorage.clear();
+  }
+
   verifyUser() {
-    myFirestore
-      .collection(AppString.USERS)
-      .where(AppString.NICKNAME, "==", "jhonmendex")
-      .get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          localStorage.setItem(AppString.ID, doc.id);
-          localStorage.setItem(AppString.NICKNAME, doc.data().nickname);
-        });
+    fetch("/plugins/un_colab/api/connect_chat_user")
+      .then((response) => response.json())
+      .then(async (user) => {
+        let username = user.usernameUncode;
+        if (username) {
+          let realname = user.userRealnameUncode;
+          const result = await myFirestore
+            .collection(AppString.USERS)
+            .where(AppString.NICKNAME, "==", username)
+            .get();
+          if (result.docs.length === 0) {
+            //si es usuario no existe
+            myFirestore
+              .collection(AppString.USERS)
+              .add({
+                nickname: username,
+                realname: realname,
+                programmer: true,
+              })
+              .then((data) => {
+                this.setState({
+                  currentUserId: data.id,
+                  currentUserNickname: username,
+                });
+              });
+          } else {
+            this.setState({
+              currentUserId: result.docs[0].id,
+              currentUserNickname: result.docs[0].data().nickname,
+            });
+          }
+        } else {
+          console.log("sin información de usuario desde UNCODE");
+        }
       })
-      .catch(function (error) {
-        console.log("Error getting documents: ", error);
+      .catch((err) => {
+        console.log(err.message);
       });
   }
 
@@ -61,8 +90,8 @@ class ChatWrapper extends Component {
       );
   };
 
-  getPairUser = (data) => {
-    this.setState({ currentPairUser: data });
+  getPairUser = (idUsr, data) => {
+    this.setState({ currentPairUser: { id: idUsr, data: data } });
   };
 
   updateMessage = (e) => {
@@ -93,10 +122,12 @@ class ChatWrapper extends Component {
             />
           </div>
         ) : null}
-        <HeaderChat currentUser={this.currentUserNickname} />
-        <div id="main_containerChat" className="row">
+        <HeaderChat currentUser={this.state.currentUserNickname} />
+        <div id="main_containerChat">
           <UserList users={users} getPairUser={this.getPairUser} />
           <Messages
+            currentUserId={this.state.currentUserId}
+            currentUserNickname={this.state.currentUserNickname}
             onChange={this.updateMessage}
             inputValues={inputValue}
             onKeyPress={this.onKeyboardPress}

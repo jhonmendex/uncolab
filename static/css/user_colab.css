@@ -31,7 +31,7 @@
   position: fixed;
   right: 250px;
   width: 50%;
-  height: 53%;
+  height: 60%;
   z-index: 9;
   margin-right: -225px;
   overflow-y: hidden;
@@ -51,4 +51,26 @@
 
 #menu-toggle:focus {
   outline: 0px;
+}
+
+#chat-container + .footer_push{
+  display: none;
+}
+
+.main_container_parent{
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+.main_container_parent #content{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#un-colab-root{
+
+}
+
+body{
+  margin: 0px;
 }

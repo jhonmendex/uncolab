@@ -1,6 +1,5 @@
 import React from "react";
-import programmerImg from "../images/programmer.svg";
-import rookieImg from "../images/rookie.svg";
+import { AppString } from "../config/Constants";
 const userList = (props) => (
   <React.Fragment>
     <div id="uncolabChat_leftbar">
@@ -10,14 +9,18 @@ const userList = (props) => (
             <div
               key={index}
               className="uncolabChat-users"
-              onClick={() => props.getPairUser(usr.data)}
+              onClick={() => props.getPairUser(usr.id, usr.data)}
             >
               <div className="uncolabChat_userlist">
                 <span className="uncolabChat_userscontentavatar">
                   <img
                     alt="imagen"
                     className="uncolabChat_userscontentavatarimage"
-                    src={usr.data.programmer ? programmerImg : rookieImg}
+                    src={
+                      usr.data.programmer
+                        ? AppString.PROGRAMMER_IMAGE
+                        : AppString.ROOKIE_IMAGE
+                    }
                   />
                 </span>
                 <div className="uncolabChat_chatboxDisplayDetails">

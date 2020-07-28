@@ -26,7 +26,7 @@ class ListMessage extends Component {
               </span>
               <div className="uncolabChat_chatboxDisplayDetails">
                 <div className="uncolabChat_userdisplayname" title="Alex">
-                  {this.props.currentPairUser.nickname}
+                  {this.props.currentPairUser.data.nickname}
                 </div>
                 <span className="uncolabChat_userscontentdot uncolabChat_desktop"></span>
                 <div className="uncolabChat_userdisplaystatus">
@@ -52,16 +52,14 @@ class ListMessage extends Component {
                 </div>
               ) : (
                 <div key={index} className="uncolabChat_messagebox">
+                  <span className="uncolabChat_ts">
+                    {moment(Number(msg.timestamp)).format("lll")}
+                  </span>
                   <div className=" uncolabChat_chatboxmessage">
                     <span className="uncolabChat_groupusername">
-                      otro usuario: {msg.content}
+                      {msg.content}
                     </span>
                   </div>
-                  {
-                    <span className="uncolabChat_ts">
-                      {moment(Number(msg.timestamp)).format("lll")}
-                    </span>
-                  }
                 </div>
               )
             )

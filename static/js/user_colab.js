@@ -1,4 +1,9 @@
 
+//consulta();
+$(function(){
+    $("#chat-container").parents('#main_container').addClass('main_container_parent');
+})
+
 
      function appendChat(){
          var isIE11 = !!navigator.userAgent.match(/Trident.*rv\:11\./);
@@ -15,10 +20,9 @@
         }
      }
 
-     function consulta() {
-         fetch('/plugins/un_colab/api/connectChat').then((result)=>{
+   /*   function consulta() {
+         fetch('/plugins/un_colab/api/connect_chat_user').then((result)=>{
            console.log(result)
        })
-
-     }
+     }*/
 

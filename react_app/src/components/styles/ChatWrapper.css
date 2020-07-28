@@ -142,9 +142,10 @@ footer,
 #uncolabChat_leftbar {
   width: 30%;
   float: left;
-  height: 100%;
+  height: 90%;
   background: #fff;
   border-right: 1px solid #d1d1d1;
+  overflow-y: auto;
 }
 #uncolabChat_righttab {
   overflow: hidden;
@@ -152,7 +153,7 @@ footer,
   background: #fff;
   width: 70%;
   flex-direction: column;
-  flex: 1 1;
+  height: 90%;
 }
 
 #chatTab {
@@ -252,21 +253,26 @@ footer,
 }
 
 .uncolabChat_self_ts {
-  font-size: 8px;
-  bottom: -70px;
-  right: 20px;
-  position: relative;
+ cursor: default;
+font-size: 9px;
+opacity: .3;
+font-weight: 700;
+position: relative;
+bottom: -65px;
+float: left;
+right: 20px;
 }
 
 .uncolabChat_ts {
   cursor: default;
-  font-size: 10px;
+  font-size: 9px;
   opacity: 0.3;
-  font-weight: bold;
+  font-weight: 700;
   display: inline-block;
   position: absolute;
-  bottom: 11px;
-  margin-left: -50px;
+  bottom: -5px;
+  float: left;
+  left: 21px;
 }
 
 .uncolabChat_chatboxmessage.uncolabChat_self {
@@ -287,8 +293,8 @@ footer,
 .uncolabChat_istypingbox:after {
   border: 8px solid transparent;
   border-bottom-color: #e6e9ed;
-  bottom: 5px;
-  left: -5px;
+  bottom: 7px;
+  left: -7px;
 }
 
 .uncolabChat_self:before {
@@ -318,12 +324,14 @@ footer,
 }
 
 .uncolabChat_messagebox:not(.cometchat_messagebox_self) {
-  min-height: 44px;
-  height: auto;
-  float: left;
-  display: inline-block;
-  position: relative;
-  width: 100%;
+    min-height: auto;
+    height: auto;
+    float: left;
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
 span.uncolabChat_cr_other_avatar {
@@ -336,11 +344,11 @@ span.uncolabChat_cr_other_avatar {
 .uncolabChat_istypingbox {
   color: #8c8b92;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12px;
   word-break: normal;
-  margin: 12px 0px 12px 60px;
-  padding: 11px 18px;
-  border-radius: 25px;
+  margin: 12px 0px 12px 20px;
+  padding: 10px;
+  border-radius: 10px;
   background: #e6e9ed;
   position: relative;
   float: left;
@@ -366,18 +374,18 @@ span.uncolabChat_cr_other_avatar {
 }
 
 .uncolabChat_self:after {
-  border-bottom-color: #56a8e3;
+  border-bottom-color: #94b43b;
   border-radius: 20px / 10px;
   left: auto;
-  right: -4px;
+  right: -6px;
 }
 
 .uncolabChat_chatboxmessage.uncolabChat_self {
   font-family: inherit;
-  font-size: 14px;
-  border-radius: 25px;
-  padding: 11px 18px;
-  background: #56a8e3;
+  font-size: 12px;
+  border-radius: 10px;
+  padding: 10px;
+  background: #94b43b;
   margin: 12px 20px 12px 3px;
   color: #ffffff;
   position: relative;
@@ -397,15 +405,17 @@ span.uncolabChat_cr_other_avatar {
 
 #uncolabChat_tabinputcontainer {
   border-top: 1px solid #d1d1d1;
-  background: rgb(238, 238, 238);
-  padding-top: 13px;
+  background: #eee;
   flex-direction: row;
-  bottom: 0px;
-  z-index: 10000000;
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 70px;
+  width: 100%;
+  flex: 1 1 1;
+  left: 0px;
+  position: fixed;
+  bottom: 0px;
+  padding: 10px 0px 10px 0;
 }
 
 #downplugins {
@@ -418,17 +428,15 @@ span.uncolabChat_cr_other_avatar {
 
 #uncolabChat_textarea {
   height: 40px;
-  margin-left: 10px;
-  padding: 4px 8px 8px 15px;
+  padding: 0px 0px 0px 10px;
   border: 1px solid #d1d1d1;
-  margin-bottom: 15px;
-  border-radius: 4px;
+  border-radius: 3px;
   text-align: start;
   font-size: 14px;
   margin-right: 15px;
   display: inline-block;
   overflow-y: hidden;
-  flex: 1 1;
+  width: 100%;
   background: #ffffff;
   white-space: break-spaces;
 }
@@ -448,12 +456,9 @@ span.uncolabChat_cr_other_avatar {
 
 .chat-content {
   display: flex;
-  flex: 1 1;
+  flex: 1 1 auto;
   flex-direction: column;
   overflow-y: scroll;
-  padding-top: 10px;
-  max-height: 78vh;
-  padding-bottom: 20px;
 }
 
 .loadding-chat {
@@ -475,9 +480,12 @@ span.uncolabChat_cr_other_avatar {
 }
 
 .wrapper-welcome img {
-  max-width: 1200px;
-  width: auto;
+  max-width: 100%;
+
   padding: 10px;
-  height: 43.5%;
   box-shadow: 0px 0px 9px -7px #000;
+}
+
+.uncolabChat_tabsubtitle {
+  flex: 1 1 1;
 }

@@ -28,6 +28,7 @@ class ChatPage(INGIniousAuthPage):
         for file in js_files:
             self.template_helper.add_javascript(base_url + 'static/js/' + file)
 
+
     def GET_AUTH(self):
         self._set_up_compiled_resources(_REACT_BUILD_FOLDER, _REACT_BASE_URL)
         #self.get_course_and_check_rights(course_id, None, False)
