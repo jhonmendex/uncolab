@@ -108,7 +108,13 @@ class ChatWrapper extends Component {
   };
 
   render() {
-    const { inputValue, users } = this.state;
+    const {
+      inputValue,
+      users,
+      currentUserId,
+      currentUserNickname,
+      currentPairUser,
+    } = this.state;
     return (
       <>
         {this.state.isLoading ? (
@@ -122,16 +128,20 @@ class ChatWrapper extends Component {
             />
           </div>
         ) : null}
-        <HeaderChat currentUser={this.state.currentUserNickname} />
+        <HeaderChat currentUser={currentUserNickname} />
         <div id="main_containerChat">
-          <UserList users={users} getPairUser={this.getPairUser} />
+          <UserList
+            currentUserId={currentUserId}
+            users={users}
+            getPairUser={this.getPairUser}
+          />
           <Messages
-            currentUserId={this.state.currentUserId}
-            currentUserNickname={this.state.currentUserNickname}
+            currentUserId={currentUserId}
+            currentUserNickname={currentUserNickname}
             onChange={this.updateMessage}
             inputValues={inputValue}
             onKeyPress={this.onKeyboardPress}
-            currentPairUser={this.state.currentPairUser}
+            currentPairUser={currentPairUser}
             ref={(element) => {
               this.child = element;
             }}

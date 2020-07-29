@@ -53,24 +53,24 @@
   outline: 0px;
 }
 
-#chat-container + .footer_push{
+#chat-container + .footer_push {
   display: none;
 }
 
-.main_container_parent{
+.main_container_parent {
   margin: 0 !important;
   padding: 0 !important;
   max-width: none !important;
 }
-.main_container_parent #content{
+.main_container_parent #content {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-#un-colab-root{
-
+#un-colab-root {
+  height: 100vh;
 }
 
-body{
+body {
   margin: 0px;
 }

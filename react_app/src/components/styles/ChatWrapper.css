@@ -136,7 +136,7 @@ footer,
 
 #main_containerChat {
   width: 100%;
-  height: 90vh;
+  height: 82vh;
 }
 
 #uncolabChat_leftbar {
@@ -153,7 +153,7 @@ footer,
   background: #fff;
   width: 70%;
   flex-direction: column;
-  height: 90%;
+  height: 89%;
 }
 
 #chatTab {
@@ -253,14 +253,14 @@ footer,
 }
 
 .uncolabChat_self_ts {
- cursor: default;
-font-size: 9px;
-opacity: .3;
-font-weight: 700;
-position: relative;
-bottom: -65px;
-float: left;
-right: 20px;
+  cursor: default;
+  font-size: 9px;
+  opacity: 0.3;
+  font-weight: 700;
+  position: relative;
+  bottom: -65px;
+  float: left;
+  right: 20px;
 }
 
 .uncolabChat_ts {
@@ -324,14 +324,12 @@ right: 20px;
 }
 
 .uncolabChat_messagebox:not(.cometchat_messagebox_self) {
-    min-height: auto;
-    height: auto;
-    float: left;
-    display: flex;
-    position: relative;
-    width: 100%;
-    flex-direction: column;
-    margin-bottom: 10px;
+  min-height: auto;
+  height: auto;
+  float: left;
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 span.uncolabChat_cr_other_avatar {
@@ -413,7 +411,7 @@ span.uncolabChat_cr_other_avatar {
   width: 100%;
   flex: 1 1 1;
   left: 0px;
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   padding: 10px 0px 10px 0;
 }
