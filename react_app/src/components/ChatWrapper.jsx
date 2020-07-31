@@ -134,6 +134,7 @@ class ChatWrapper extends Component {
             currentUserId={currentUserId}
             users={users}
             getPairUser={this.getPairUser}
+            currentPairUser={currentPairUser}
           />
           <Messages
             currentUserId={currentUserId}

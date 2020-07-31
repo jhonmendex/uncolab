@@ -130,7 +130,17 @@ footer,
   background: #97c846;
 }
 
-.uncolabChat_userlist:hover {
+.uncolabChat_userlist:hover{
+  background: #f2f2f2;
+}
+
+.uncolabChat_userlist_focus{
+   cursor: pointer;
+  overflow: hidden;
+  line-height: 100%;
+  padding: 6px;
+  border-bottom: 1px solid #d1d1d1;
+  color: #4a4848;
   background: #f2f2f2;
 }
 
@@ -140,7 +150,7 @@ footer,
 }
 
 #uncolabChat_leftbar {
-  width: 30%;
+  width: 20%;
   float: left;
   height: 90%;
   background: #fff;
@@ -151,7 +161,7 @@ footer,
   overflow: hidden;
   display: flex;
   background: #fff;
-  width: 70%;
+  width: 80%;
   flex-direction: column;
   height: 89%;
 }
@@ -184,6 +194,7 @@ footer,
   padding: 6px;
   border-bottom: 1px solid #d1d1d1;
   color: #4a4848;
+  background: #ffffff;
 }
 .uncolabChat_userlist-headermsg {
   cursor: pointer;
@@ -479,7 +490,6 @@ span.uncolabChat_cr_other_avatar {
 
 .wrapper-welcome img {
   max-width: 100%;
-
   padding: 10px;
   box-shadow: 0px 0px 9px -7px #000;
 }
@@ -487,3 +497,4 @@ span.uncolabChat_cr_other_avatar {
 .uncolabChat_tabsubtitle {
   flex: 1 1 1;
 }
+

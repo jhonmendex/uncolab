@@ -13,7 +13,12 @@ const userList = (props) => (
                   className="uncolabChat-users"
                   onClick={() => props.getPairUser(usr.id, usr.data)}
                 >
-                  <div className="uncolabChat_userlist">
+                  <div className={
+                      props.currentPairUser &&
+                      props.currentPairUser.id === usr.id
+                          ? "uncolabChat_userlist_focus"
+                          : "uncolabChat_userlist"
+                  }>
                     <span className="uncolabChat_userscontentavatar">
                       <img
                         alt="imagen"
@@ -33,9 +38,6 @@ const userList = (props) => (
                         {usr.data.nickname}
                       </div>
                       <span className="uncolabChat_userscontentdot uncolabChat_desktop"></span>
-                      <div className="uncolabChat_userdisplaystatus">
-                        I'm available
-                      </div>
                     </div>
                   </div>
                 </div>
