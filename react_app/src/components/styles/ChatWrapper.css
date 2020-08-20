@@ -130,12 +130,12 @@ footer,
   background: #97c846;
 }
 
-.uncolabChat_userlist:hover{
+.uncolabChat_userlist:hover {
   background: #f2f2f2;
 }
 
-.uncolabChat_userlist_focus{
-   cursor: pointer;
+.uncolabChat_userlist_focus {
+  cursor: pointer;
   overflow: hidden;
   line-height: 100%;
   padding: 6px;
@@ -422,7 +422,7 @@ span.uncolabChat_cr_other_avatar {
   width: 100%;
   flex: 1 1 1;
   left: 0px;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   padding: 10px 0px 10px 0;
 }
@@ -497,4 +497,3 @@ span.uncolabChat_cr_other_avatar {
 .uncolabChat_tabsubtitle {
   flex: 1 1 1;
 }
-

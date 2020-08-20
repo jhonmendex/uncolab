@@ -1,5 +1,8 @@
-$def with ()
+$def with (course_id,task_id)
 $var title: Un Colab
 <div id="chat-container">
- <div id="un-colab-root"></div>
+ <div id="un-colab-root" group="$:course_id" task="$:task_id"></div>
 </div>
+<script>
+  document.querySelector('#services').style.display = 'none';
+</script>

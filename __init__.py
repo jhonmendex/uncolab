@@ -19,14 +19,14 @@ def init(plugin_manager, course_factory, client, config):
 
     def chat_course_menu_hook(course,task, template_helper):
         return """
-                <button type="button" onclick="appendChat()" id="menu-toggle" class="btn btn-secondary"><i id="toggleIcon" class="fa-angle-double-down fa"></i> Collaboration.
+                <button type="button" onclick="appendChat()" id="menu-toggle" class="btn btn-secondary"><i id="toggleIcon" class="fa-angle-double-down fa"></i> Collaboration
                 </button>
                 <div id="wrapper-chat" class="toggled">
                   <div id="sidebar-wrapper-chat">
-                   <iframe src="/un_colab" frameborder="0" width="100%" height="100%" scrolling="no"></iframe>  Æ
+                   <iframe src="/un_colab/{course_id}/{task_id}" frameborder="0" width="100%" height="100%" scrolling="no"></iframe>
                   </div>
                 </div>
-                """
+                """.format(course_id=course.get_id(),task_id=task.get_id())
 
     plugin_manager.add_page(r'/un_colab/static/(.*)', create_static_resource_page(_static_folder_path))
     plugin_manager.add_page('/plugins/un_colab/api/connect_chat_user', ConnectChatUser)
@@ -35,4 +35,4 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page(_BASE_STATIC_URL + r'(.*)', create_static_resource_page(_BASE_STATIC_FOLDER))
 
     plugin_manager.add_hook('task_menu', chat_course_menu_hook)
-    plugin_manager.add_page('/un_colab', ChatPage)
+    plugin_manager.add_page('/un_colab/([a-z0-9A-Z\-_]+)/([a-z0-9A-Z\-_]+)', ChatPage)
