@@ -1,5 +1,5 @@
 
-//consulta();
+consulta();
 $(function(){
     $("#chat-container").parents('#main_container').addClass('main_container_parent');
 })
@@ -20,9 +20,10 @@ $(function(){
         }
      }
 
-   /*   function consulta() {
-         fetch('/plugins/un_colab/api/connect_chat_user').then((result)=>{
+     function consulta() {
+         fetch('/plugins/un_colab/api/score_task_user',{course_id: 'group-5'}).then((result)=>{
+
            console.log(result)
        })
-     }*/
+     }
 

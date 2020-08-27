@@ -4,6 +4,7 @@ from inginious.frontend.plugins.utils import create_static_resource_page, read_f
 from inginious.frontend.plugins.un_colab.constants import _REACT_BASE_URL, _REACT_BUILD_FOLDER, _BASE_STATIC_FOLDER, _BASE_STATIC_URL
 from .pages.chat_page import ChatPage
 from .pages.api.connect_chat_user import ConnectChatUser
+from .pages.api.score_task_user import ScoreTaskUser
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -30,6 +31,7 @@ def init(plugin_manager, course_factory, client, config):
 
     plugin_manager.add_page(r'/un_colab/static/(.*)', create_static_resource_page(_static_folder_path))
     plugin_manager.add_page('/plugins/un_colab/api/connect_chat_user', ConnectChatUser)
+    plugin_manager.add_page('/plugins/un_colab/api/score_task_user', ScoreTaskUser)
 
     plugin_manager.add_page(_REACT_BASE_URL + r'(.*)', create_static_resource_page(_REACT_BUILD_FOLDER))
     plugin_manager.add_page(_BASE_STATIC_URL + r'(.*)', create_static_resource_page(_BASE_STATIC_FOLDER))
