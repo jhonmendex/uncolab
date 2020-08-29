@@ -206,7 +206,7 @@ footer,
   flex-direction: row;
   border-bottom: 1px solid #d1d1d1;
   color: #4a4848;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .uncolabChat_chatboxDisplayDetails {
@@ -496,4 +496,45 @@ span.uncolabChat_cr_other_avatar {
 
 .uncolabChat_tabsubtitle {
   flex: 1 1 1;
+}
+
+/*styles home page */
+#welcomepyn {
+  font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: #f2f2f2;
+  padding: 0;
+}
+#welcomepyn h1 {
+  font-family: inherit;
+}
+#welcomepyn p {
+  width: 70%;
+  margin: 0 auto;
+  font-family: inherit;
+}
+#welcomepyn .freepik {
+  display: none;
+}
+
+#welcomepyn .cita {
+  font-size: 1em;
+  margin: 0;
+  font-family: inherit;
+}
+#welcomepyn ul {
+  text-align: center;
+  margin: 5px auto 5px;
+  list-style-type: circle;
+  font-size: 1em;
+  display: inline-flex;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+#welcomepyn ul li:nth-child(2) {
+  margin: 0 30px;
 }
