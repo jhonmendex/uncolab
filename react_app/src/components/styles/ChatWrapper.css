@@ -538,3 +538,13 @@ span.uncolabChat_cr_other_avatar {
 #welcomepyn ul li:nth-child(2) {
   margin: 0 30px;
 }
+#welcomepyn img {
+  max-width: 60vh;
+}
+
+#welcomepyn a {
+  color: #008cba;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}

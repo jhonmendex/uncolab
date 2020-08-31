@@ -1,7 +1,8 @@
 
-consulta();
+//consulta();
 $(function(){
     $("#chat-container").parents('#main_container').addClass('main_container_parent');
+    $("body").css('background-color','#f2f2f2');
 })
 
 

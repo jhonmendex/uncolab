@@ -56,8 +56,13 @@
 }
 
 #chat-container + .footer_push {
-  display: none;
+  display: none !important;
 }
+
+#chat-container #footer, #chat-container .footer_push{
+  display: none !important;
+}
+
 
 .main_container_parent {
   margin: 0 !important;

@@ -1,15 +1,63 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import ReactLoading from "react-loading";
+import ModalHome from "./components/ModalHome";
+
 class HomeChat extends Component {
+  state = {
+    isloading: false,
+    error: null,
+    data: undefined,
+    modalIsOpen: false,
+  };
+
+  componentDidMount() {
+    this.fetchTaskStatus();
+  }
+
+  fetchTaskStatus = async () => {
+    this.setState({ isloading: true, error: null });
+    try {
+      let taskStatusUser = await fetch("/plugins/un_colab/api/score_task_user");
+      let data = await taskStatusUser.json();
+      this.setState({ isloading: false, data: data.response });
+      console.log(this.state.data);
+    } catch (error) {
+      this.setState({ isloading: false, error: error });
+    }
+  };
+  handleCloseModal = (e) => {
+    this.setState({ modalIsOpen: false });
+  };
+
+  handleOpenModal = (e) => {
+    this.setState({ modalIsOpen: true });
+    this.fetchTaskStatus();
+  };
   render() {
     return (
       <div id="welcomepyn">
+        {this.state.isloading ? (
+          <div className="viewLoading">
+            <ReactLoading
+              type={"spinningBubbles"}
+              color={"#94b43b"}
+              height={"10%"}
+              width={"10%"}
+              className="loadding-chat"
+            />
+          </div>
+        ) : null}
+        <ModalHome
+          isOpen={this.state.modalIsOpen}
+          onClose={this.handleCloseModal}
+          taskStatus={this.state.data}
+        ></ModalHome>
         <h1>
           ¿Eres <strong style={{ color: "#00AF50" }}>programador</strong> o{" "}
           <strong style={{ color: "#FE0B00" }}>novato</strong>?
         </h1>
         <h4>
-          haz click <Link to={{ pathname: "/chat" }}> aquí </Link>para saber la
+          haz click <a onClick={this.handleOpenModal}> aquí </a>para saber la
           respuesta
         </h4>
 
