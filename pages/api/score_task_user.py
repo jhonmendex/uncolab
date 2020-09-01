@@ -1,11 +1,16 @@
+import web
 from inginious.frontend.plugins.utils.admin_api import AdminApi
+from inginious.frontend.plugins.utils import get_mandatory_parameter
+
 import pymongo
 
 
 class ScoreTaskUser(AdminApi):
     def API_GET(self):
-        course_id = 'group-5'
-        task_id = 'triangle'
+
+        parameters = web.input()
+        course_id = get_mandatory_parameter(parameters, "course_id")
+        task_id = get_mandatory_parameter(parameters, "task_id")
         user = self.user_manager.session_username()
 
         db_results = self.database.submissions.find({

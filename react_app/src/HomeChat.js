@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import ReactLoading from "react-loading";
 import ModalHome from "./components/ModalHome";
-
+import $ from "jquery";
 class HomeChat extends Component {
   state = {
     isloading: false,
-    error: null,
+    error: false,
     data: undefined,
     modalIsOpen: false,
+    courseId: this.props.match.params.courseId,
+    taskId: this.props.match.params.taskId,
   };
 
   componentDidMount() {
@@ -15,14 +17,17 @@ class HomeChat extends Component {
   }
 
   fetchTaskStatus = async () => {
-    this.setState({ isloading: true, error: null });
+    this.setState({ isloading: true, error: false });
     try {
-      let taskStatusUser = await fetch("/plugins/un_colab/api/score_task_user");
+      let url =
+        "/plugins/un_colab/api/score_task_user?" +
+        $.param({ course_id: this.state.courseId, task_id: this.state.taskId });
+      let taskStatusUser = await fetch(url);
       let data = await taskStatusUser.json();
       this.setState({ isloading: false, data: data.response });
       console.log(this.state.data);
     } catch (error) {
-      this.setState({ isloading: false, error: error });
+      this.setState({ isloading: false, error: true });
     }
   };
   handleCloseModal = (e) => {
@@ -51,6 +56,7 @@ class HomeChat extends Component {
           isOpen={this.state.modalIsOpen}
           onClose={this.handleCloseModal}
           taskStatus={this.state.data}
+          error={this.state.error}
         ></ModalHome>
         <h1>
           ¿Eres <strong style={{ color: "#00AF50" }}>programador</strong> o{" "}
