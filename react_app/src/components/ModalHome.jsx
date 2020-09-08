@@ -12,21 +12,25 @@ const HomeModal = (props) => {
             programa (submission) para conocer! 🙁
           </div>
         )}
-        {props.taskStatus == "programmer" && (
+        {props.taskStatus == "true" && (
           <>
             <div class="alert alert-primary mr-4" role="alert">
               <h1>¡Felicitaciones! Eres un programador 😏</h1>
               <p>Los mejores programadores siempre comparten su conocimiento</p>
             </div>
 
-            <Link to="/chat">
+            <Link
+              to={{
+                pathname: `/chat/${props.taskStatus}`,
+              }}
+            >
               <button className="btn btn-primary m-2">
                 Colaborar a un Novato
               </button>
             </Link>
           </>
         )}
-        {props.taskStatus == "noob" && (
+        {props.taskStatus == "false" && (
           <>
             <div class="alert alert-danger mr-4" role="alert">
               <h1>¡Te falta poco para ser programador! 🙁</h1>
@@ -35,7 +39,11 @@ const HomeModal = (props) => {
                 subir de nivel
               </p>
             </div>
-            <Link to="/chat">
+            <Link
+              to={{
+                pathname: `/chat/${props.taskStatus}`,
+              }}
+            >
               <button className="btn btn-primary m-2">
                 Recibir colaboración de un Programador
               </button>

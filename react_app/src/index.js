@@ -9,7 +9,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route exact path="/un_colab/:courseId/:taskId" component={HomeChat} />
-      <Route path="/chat" component={ChatWrapper} />
+      <Route path="/chat/:status" component={ChatWrapper} />
     </Switch>
   </BrowserRouter>,
   document.getElementById("un-colab-root")

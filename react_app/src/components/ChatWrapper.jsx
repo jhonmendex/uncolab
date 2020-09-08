@@ -9,27 +9,36 @@ import "./styles/ChatWrapper.css";
 import { AppString } from "../config/Constants";
 
 class ChatWrapper extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoading: true,
-      inputValue: "",
-      users: [],
-      currentPairUser: null,
-      currentUserId: null,
-      currentUserNickname: null,
-    };
-  }
+  state = {
+    isLoading: true,
+    inputValue: "",
+    users: [],
+    currentPairUser: null,
+    currentUserId: null,
+    currentUserNickname: null,
+    taskState: this.props.match.params.status,
+  };
 
   componentDidMount() {
     this.verifyUser();
     this.getListUser();
   }
 
-  componentWillUnmount() {
-    localStorage.clear();
+  updateUserStatus(currenUser) {
+    let userDb = myFirestore.collection(AppString.USERS).doc(currenUser);
+    let isProgrammer = /true/i.test(this.state.taskState);
+    return userDb
+      .update({
+        programmer: isProgrammer,
+      })
+      .then(function () {
+        console.log("Document successfully updated!");
+      })
+      .catch(function (error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
   }
-
   verifyUser() {
     fetch("/plugins/un_colab/api/connect_chat_user")
       .then((response) => response.json())
@@ -65,6 +74,7 @@ class ChatWrapper extends Component {
         } else {
           console.log("sin información de usuario desde UNCODE");
         }
+        this.updateUserStatus(this.state.currentUserId);
       })
       .catch((err) => {
         console.log(err.message);
@@ -114,6 +124,7 @@ class ChatWrapper extends Component {
       currentUserId,
       currentUserNickname,
       currentPairUser,
+      taskState,
     } = this.state;
     return (
       <>
@@ -135,6 +146,7 @@ class ChatWrapper extends Component {
             users={users}
             getPairUser={this.getPairUser}
             currentPairUser={currentPairUser}
+            taskState={taskState}
           />
           <Messages
             currentUserId={currentUserId}

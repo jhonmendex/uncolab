@@ -1,4 +1,4 @@
-consulta();
+//consulta();
 $(function () {
   $("#chat-container")
     .parents("#main_container")

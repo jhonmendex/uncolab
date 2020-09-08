@@ -24,8 +24,7 @@ class HomeChat extends Component {
         $.param({ course_id: this.state.courseId, task_id: this.state.taskId });
       let taskStatusUser = await fetch(url);
       let data = await taskStatusUser.json();
-      this.setState({ isloading: false, data: data.response });
-      console.log(this.state.data);
+      this.setState({ isloading: false, data: data.programmer });
     } catch (error) {
       this.setState({ isloading: false, error: true });
     }
@@ -38,6 +37,7 @@ class HomeChat extends Component {
     this.setState({ modalIsOpen: true });
     this.fetchTaskStatus();
   };
+
   render() {
     return (
       <div id="welcomepyn">

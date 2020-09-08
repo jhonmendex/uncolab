@@ -12,7 +12,7 @@
   position: fixed;
   top: 50%;
   right: -45.75px;
-  z-index: 9;
+  z-index: 99;
   transform: rotate(90deg);
   background: #a7142c;
 }

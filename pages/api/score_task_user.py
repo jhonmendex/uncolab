@@ -36,8 +36,8 @@ class ScoreTaskUser(AdminApi):
             response = 'nosubmission'
         else:
             if success > 0:
-                response = 'programmer'
+                response = 'true'
             else:
-                response = 'noob'
+                response = 'false'
 
-        return 200, {'response': response}
+        return 200, {'programmer': response}
