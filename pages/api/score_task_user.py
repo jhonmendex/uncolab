@@ -21,16 +21,16 @@ class ScoreTaskUser(AdminApi):
             {"username": True, "_id": False, "taskid": True, "result": True, "submitted_on": True}).sort(
             [("submitted_on", pymongo.ASCENDING)])
 
-        success = 0
+        success = 0 
         fails = 0
 
         for submission in db_results:
             if submission['result'] == "success":
                 success += 1
-                print(submission['result'] + " " + submission['taskid'] + " " + submission['username'][0])
+                #print(submission['result'] + " " + submission['taskid'] + " " + submission['username'][0])
             else:
                 fails += 1
-                print(submission['result'] + " " + submission['taskid'] + " " + submission['username'][0])
+                #print(submission['result'] + " " + submission['taskid'] + " " + submission['username'][0])
 
         if success == 0 and fails == 0:
             response = 'nosubmission'

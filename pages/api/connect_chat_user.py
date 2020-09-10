@@ -5,4 +5,5 @@ class ConnectChatUser(AdminApi):
         username = self.user_manager.session_username()
         userrealname = self.user_manager.session_realname()
         useremail = self.user_manager.session_email()
-        return 200, {'userEmailUncode': useremail,'usernameUncode':username, 'userRealnameUncode': userrealname}
+        valsuperadmin = self.user_manager.user_is_superadmin(username)
+        return 200, {'userEmailUncode': useremail,'usernameUncode':username, 'userRealnameUncode': userrealname,'userAdmin': valsuperadmin}

@@ -44,37 +44,44 @@ class ChatWrapper extends Component {
       .then((response) => response.json())
       .then(async (user) => {
         let username = user.usernameUncode;
-        if (username) {
-          let realname = user.userRealnameUncode;
-          const result = await myFirestore
-            .collection(AppString.USERS)
-            .where(AppString.NICKNAME, "==", username)
-            .get();
-          if (result.docs.length === 0) {
-            //si es usuario no existe
-            myFirestore
+        let isAdmin = user.userAdmin;
+        if (!isAdmin) {
+          if (username) {
+            let realname = user.userRealnameUncode;
+
+            const result = await myFirestore
               .collection(AppString.USERS)
-              .add({
-                nickname: username,
-                realname: realname,
-                programmer: true,
-              })
-              .then((data) => {
-                this.setState({
-                  currentUserId: data.id,
-                  currentUserNickname: username,
+              .where(AppString.NICKNAME, "==", username)
+              .get();
+            if (result.docs.length === 0) {
+              //si es usuario no existe
+              let isProgrammer = /true/i.test(this.state.taskState);
+              myFirestore
+                .collection(AppString.USERS)
+                .add({
+                  nickname: username,
+                  realname: realname,
+                  programmer: isProgrammer,
+                })
+                .then((data) => {
+                  this.setState({
+                    currentUserId: data.id,
+                    currentUserNickname: username,
+                  });
                 });
+            } else {
+              this.setState({
+                currentUserId: result.docs[0].id,
+                currentUserNickname: result.docs[0].data().nickname,
               });
+            }
           } else {
-            this.setState({
-              currentUserId: result.docs[0].id,
-              currentUserNickname: result.docs[0].data().nickname,
-            });
+            console.log("sin información de usuario desde UNCODE");
           }
+          this.updateUserStatus(this.state.currentUserId);
         } else {
-          console.log("sin información de usuario desde UNCODE");
+          console.log("usuario admin");
         }
-        this.updateUserStatus(this.state.currentUserId);
       })
       .catch((err) => {
         console.log(err.message);
