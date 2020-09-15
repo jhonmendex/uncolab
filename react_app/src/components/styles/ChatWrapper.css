@@ -14,6 +14,9 @@ footer,
   display: none !important;
 }
 
+body {
+  overflow-y: hidden;
+}
 #wrapper-chat {
   padding-left: 250px;
   -webkit-transition: all 0.5s ease;
@@ -63,7 +66,7 @@ footer,
 .uncolabChat_botscontentavatar {
   display: block;
   float: left;
-  left: 11px;
+  left: 1px;
   top: 2px;
   position: relative;
 }
@@ -95,9 +98,9 @@ footer,
 
 .uncolabChat_userdisplayname,
 .cometchat_botdisplayname {
-  padding: 6px 0px 2px 0px;
-  margin-left: 20px;
-  font-size: 14px;
+  padding: 1px 1px 0px;
+  margin-left: 0px;
+  font-size: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -106,9 +109,9 @@ footer,
 
 .uncolabChat_userdisplaystatus,
 .uncolabChat_botdisplaystatus {
-  padding: 4px 2px;
-  margin-left: 40px;
-  font-size: 13px;
+  padding: 2px 0px;
+  margin-left: 38px;
+  font-size: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -146,13 +149,13 @@ footer,
 
 #main_containerChat {
   width: 100%;
-  height: 82vh;
+  height: 100vh;
 }
 
 #uncolabChat_leftbar {
   width: 20%;
   float: left;
-  height: 90%;
+  height: calc(100vh - 135px);
   background: #fff;
   border-right: 1px solid #d1d1d1;
   overflow-y: auto;
@@ -163,7 +166,7 @@ footer,
   background: #fff;
   width: 80%;
   flex-direction: column;
-  height: 89%;
+  height: calc(100vh - 135px);
 }
 
 #chatTab {
@@ -195,6 +198,7 @@ footer,
   border-bottom: 1px solid #d1d1d1;
   color: #4a4848;
   background: #ffffff;
+  display: flex;
 }
 .uncolabChat_userlist-headermsg {
   cursor: pointer;
@@ -209,6 +213,15 @@ footer,
   justify-content: flex-start;
 }
 
+.uncolabChat_userlist-headermsg .uncolabChat_userdisplayname {
+  padding: 1px 10px 0;
+}
+.uncolabChat_userlist-headermsg .uncolabChat_desktop {
+  margin-left: 12px;
+}
+.uncolabChat_userlist-headermsg .uncolabChat_userdisplaystatus {
+  margin-left: 30px;
+}
 .uncolabChat_chatboxDisplayDetails {
   overflow: hidden;
   float: left;
@@ -221,9 +234,10 @@ footer,
   border-width: 2px 1px 4px;
   height: 10px !important;
   width: 12px !important;
-  background: #ffffff;
+  background: #fff;
   color: #94b43b;
-  margin-top: 5px;
+  margin-top: 3px;
+  margin-left: 1px;
 }
 
 .uncolabChat_righttab {
@@ -482,15 +496,22 @@ span.uncolabChat_cr_other_avatar {
 }
 .wrapper-welcome h4,
 .wrapper-welcome p {
-  padding: 10px 5px;
+  padding: 0px 10vh;
   margin-top: 10px;
+  font-size: 4.5vh;
   font-family: inherit;
   text-align: center;
 }
 
+.wrapper-welcome p {
+  font-size: 3.5vh;
+  margin-top: 1px;
+}
+
 .wrapper-welcome img {
-  max-width: 100%;
+  max-width: 100vh;
   padding: 10px;
+  margin: 0 auto;
   box-shadow: 0px 0px 9px -7px #000;
 }
 
@@ -547,4 +568,23 @@ span.uncolabChat_cr_other_avatar {
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.notifications_user_list {
+  margin-left: 50px;
+  color: #a7142c;
+  font-size: 1.5em;
+}
+
+.displaynone {
+  display: none;
+}
+
+.displayblock {
+  display: block;
+}
+
+#uncolabChat_header .uncolabChat_userdisplayname {
+  font-size: 14px;
+  padding: 1px 20px 0px;
 }

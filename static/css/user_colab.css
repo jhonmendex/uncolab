@@ -5,8 +5,6 @@
 (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
 
-
-
 #menu-toggle {
   color: white;
   position: fixed;
@@ -59,10 +57,10 @@
   display: none !important;
 }
 
-#chat-container #footer, #chat-container .footer_push{
+#chat-container #footer,
+#chat-container .footer_push {
   display: none !important;
 }
-
 
 .main_container_parent {
   margin: 0 !important;
@@ -75,7 +73,7 @@
 }
 
 #un-colab-root {
-  height: 100vh;
+  height: auto;
 }
 
 body {

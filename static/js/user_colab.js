@@ -4,6 +4,7 @@ $(function () {
     .parents("#main_container")
     .addClass("main_container_parent");
   $("body").css("background-color", "#f2f2f2");
+  $("#task .problem").css("z-index", "0");
 });
 
 function appendChat() {

@@ -1,5 +1,6 @@
 import React from "react";
 import { AppString } from "../config/Constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const userList = (props) => (
   <React.Fragment>
     <div id="uncolabChat_leftbar">
@@ -41,6 +42,11 @@ const userList = (props) => (
                           {usr.data.nickname}
                         </div>
                         <span className="uncolabChat_userscontentdot uncolabChat_desktop"></span>
+
+                        <FontAwesomeIcon
+                          className="notifications_user_list"
+                          icon="comment-dots"
+                        />
                       </div>
                     </div>
                   </div>
