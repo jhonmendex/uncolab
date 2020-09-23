@@ -1,13 +1,13 @@
 import React from "react";
 import { AppString } from "../config/Constants";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Notification from "../components/Notification";
 const userList = (props) => (
   <React.Fragment>
     <div id="uncolabChat_leftbar">
       <div className="tab-content" id="nav-tabContent">
         <div id="home" role="tabpanel" aria-labelledby="nav-home-tab">
           {props.users.map((usr, index) =>
-            props.taskState == "true"
+            props.taskState === "true"
               ? props.currentUserId !== usr.id &&
                 !usr.data.programmer && (
                   <div
@@ -42,10 +42,9 @@ const userList = (props) => (
                           {usr.data.nickname}
                         </div>
                         <span className="uncolabChat_userscontentdot uncolabChat_desktop"></span>
-
-                        <FontAwesomeIcon
-                          className="notifications_user_list"
-                          icon="comment-dots"
+                        <Notification
+                          user={props.currentUserId}
+                          peer={usr.id}
                         />
                       </div>
                     </div>
@@ -85,6 +84,10 @@ const userList = (props) => (
                           {usr.data.nickname}
                         </div>
                         <span className="uncolabChat_userscontentdot uncolabChat_desktop"></span>
+                        <Notification
+                          user={props.currentUserId}
+                          peer={usr.id}
+                        />
                       </div>
                     </div>
                   </div>

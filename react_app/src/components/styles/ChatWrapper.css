@@ -84,7 +84,7 @@ body {
 #uncolabChat_selfDetails {
   overflow: hidden;
   float: left;
-  max-width: 85%;
+  max-width: 79%;
   width: inherit;
 }
 
@@ -571,9 +571,15 @@ span.uncolabChat_cr_other_avatar {
 }
 
 .notifications_user_list {
-  margin-left: 50px;
   color: #a7142c;
-  font-size: 1.5em;
+  animation-name: notification;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  position: relative;
+  display: block;
+  left: 2px;
+  top: 2px;
 }
 
 .displaynone {
@@ -587,4 +593,13 @@ span.uncolabChat_cr_other_avatar {
 #uncolabChat_header .uncolabChat_userdisplayname {
   font-size: 14px;
   padding: 1px 20px 0px;
+}
+
+@keyframes notification {
+  from {
+    font-size: 2vw;
+  }
+  to {
+    font-size: 2.3vw;
+  }
 }

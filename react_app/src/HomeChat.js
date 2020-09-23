@@ -63,8 +63,12 @@ class HomeChat extends Component {
           <strong style={{ color: "#FE0B00" }}>novato</strong>?
         </h1>
         <h4>
-          haz click <a onClick={this.handleOpenModal}> aquí </a>para saber la
-          respuesta
+          haz click{" "}
+          <a href="#" onClick={this.handleOpenModal}>
+            {" "}
+            aquí{" "}
+          </a>
+          para saber la respuesta
         </h4>
 
         <p>Conoce algunas ventajas del aprendizaje colaborativo:</p>

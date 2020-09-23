@@ -10,6 +10,7 @@ class Messages extends Component {
     super(props);
     this.state = {
       isLoading: false,
+      newMessage: false,
     };
     this.groupChatId = null;
     this.listMessage = [];
@@ -36,7 +37,7 @@ class Messages extends Component {
       content: content.trim(),
       type: type,
     };
-
+    //SET MESSAGES
     myFirestore
       .collection(AppString.MESSAGES)
       .doc(this.groupChatId)
@@ -45,6 +46,7 @@ class Messages extends Component {
       .set(itemMessage)
       .then(() => {
         this.child.scrollToMyRef();
+        console.log("mensaje enviado");
       })
       .catch((err) => {
         console.log(err);

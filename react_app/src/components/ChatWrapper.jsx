@@ -17,6 +17,7 @@ class ChatWrapper extends Component {
     currentUserId: null,
     currentUserNickname: null,
     taskState: this.props.match.params.status,
+    messagesUser: [],
   };
 
   componentDidMount() {
@@ -132,6 +133,7 @@ class ChatWrapper extends Component {
       currentUserNickname,
       currentPairUser,
       taskState,
+      messagesUser,
     } = this.state;
     return (
       <>
@@ -154,6 +156,7 @@ class ChatWrapper extends Component {
             getPairUser={this.getPairUser}
             currentPairUser={currentPairUser}
             taskState={taskState}
+            messagesUser={messagesUser}
           />
           <Messages
             currentUserId={currentUserId}
