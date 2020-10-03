@@ -595,11 +595,14 @@ span.uncolabChat_cr_other_avatar {
   padding: 1px 20px 0px;
 }
 
+.uncolabChat_userlist_focus .notifications_user_list {
+  display: none;
+}
 @keyframes notification {
   from {
-    font-size: 2vw;
+    font-size: 0.8em;
   }
   to {
-    font-size: 2.3vw;
+    font-size: 1em;
   }
 }

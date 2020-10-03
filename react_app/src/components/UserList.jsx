@@ -1,6 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { AppString } from "../config/Constants";
 import Notification from "../components/Notification";
+
 const userList = (props) => (
   <React.Fragment>
     <div id="uncolabChat_leftbar">
@@ -10,9 +11,10 @@ const userList = (props) => (
             props.taskState === "true"
               ? props.currentUserId !== usr.id &&
                 !usr.data.programmer && (
-                  <div
+                  <label
                     key={index}
-                    className="uncolabChat-users"
+                    htmlFor={usr.id}
+                    className="uncolabChat_users"
                     onClick={() => props.getPairUser(usr.id, usr.data)}
                   >
                     <div
@@ -43,18 +45,20 @@ const userList = (props) => (
                         </div>
                         <span className="uncolabChat_userscontentdot uncolabChat_desktop"></span>
                         <Notification
-                          user={props.currentUserId}
-                          peer={usr.id}
+                          currUser={props.currentUserId}
+                          currPair={usr.id}
+                          initialState={false}
+                          messagesUser={props.messagesUser}
                         />
                       </div>
                     </div>
-                  </div>
+                  </label>
                 )
               : props.currentUserId !== usr.id &&
                 usr.data.programmer && (
-                  <div
+                  <label
                     key={index}
-                    className="uncolabChat-users"
+                    className="uncolabChat_users"
                     onClick={() => props.getPairUser(usr.id, usr.data)}
                   >
                     <div
@@ -85,12 +89,14 @@ const userList = (props) => (
                         </div>
                         <span className="uncolabChat_userscontentdot uncolabChat_desktop"></span>
                         <Notification
-                          user={props.currentUserId}
-                          peer={usr.id}
+                          currUser={props.currentUserId}
+                          currPair={usr.id}
+                          initialState={false}
+                          messagesUser={props.messagesUser}
                         />
                       </div>
                     </div>
-                  </div>
+                  </label>
                 )
           )}
         </div>
@@ -99,4 +105,4 @@ const userList = (props) => (
   </React.Fragment>
 );
 
-export default userList;
+export default memo(userList);

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, memo } from "react";
 import { myFirestore } from "../config/MyFirebase";
 import ReactLoading from "react-loading";
 import HeaderChat from "../components/HeaderChat";
@@ -17,7 +17,7 @@ class ChatWrapper extends Component {
     currentUserId: null,
     currentUserNickname: null,
     taskState: this.props.match.params.status,
-    messagesUser: [],
+    messagesUser: null,
   };
 
   componentDidMount() {
@@ -98,7 +98,8 @@ class ChatWrapper extends Component {
           this.setState({
             isLoading: false,
             users: snap.docs.map((doc) => {
-              return { id: doc.id, data: doc.data() };
+              let totalMessages;
+              return { id: doc.id, data: doc.data(), cant: 20 };
             }),
           });
         },
@@ -109,8 +110,43 @@ class ChatWrapper extends Component {
   };
 
   getPairUser = (idUsr, data) => {
-    this.setState({ currentPairUser: { id: idUsr, data: data } });
+    this.setState({
+      currentPairUser: { id: idUsr, data: data },
+    });
+    this.getCountMessages(idUsr);
   };
+
+  hashString = (str) => {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash += Math.pow(str.charCodeAt(i) * 31, str.length - i);
+      hash = hash & hash;
+    }
+    return hash;
+  };
+
+  getCountMessages(pairuser) {
+    let groupChatId;
+    if (this.state.currentUserId === null || pairuser === null) {
+    } else {
+      if (
+        this.hashString(this.state.currentUserId) <= this.hashString(pairuser)
+      ) {
+        groupChatId = `${this.state.currentUserId}-${pairuser}`;
+      } else {
+        groupChatId = `${pairuser}-${this.state.currentUserId}`;
+      }
+
+      myFirestore
+        .collection(AppString.MESSAGES)
+        .doc(groupChatId)
+        .collection(groupChatId)
+        .get()
+        .then((querySnapshot) => {
+          this.setState({ messagesUser: querySnapshot.size });
+        });
+    }
+  }
 
   updateMessage = (e) => {
     this.setState({

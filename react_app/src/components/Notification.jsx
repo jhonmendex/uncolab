@@ -3,46 +3,69 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { myFirestore } from "../config/MyFirebase";
 import { AppString } from "../config/Constants";
 
-function getMessagesUser(user, peer) {
-  let messageId = `${user}-${peer}`;
-  let messageIdAux = `${peer}-${user}`;
-  console.log(messageId);
-  myFirestore
-    .collection(AppString.MESSAGES)
-    .doc(messageId)
-    .collection(messageId)
-    .onSnapshot((snapshot) => {
-      snapshot.docChanges().forEach((change) => {
-        if (change.type === AppString.DOC_ADDED) {
-          console.log("notificacion para " + messageId);
-        }
-      });
-    });
+function Notification({ currUser, currPair, initialState, messagesUser }) {
+  const [checked, setChecked] = useState(initialState);
+  const [countPrev, setCountPrev] = useState(messagesUser);
+  const [countNext, setCountNext] = useState(0);
 
-  myFirestore
-    .collection(AppString.MESSAGES)
-    .doc(messageIdAux)
-    .collection(messageIdAux)
-    .onSnapshot((snapshot) => {
-      snapshot.docChanges().forEach((change) => {
-        if (change.type === AppString.DOC_ADDED) {
-          console.log("notificacion2 para " + messageId);
-        }
-      });
-    });
-}
+  getMessagesUser(currUser, currPair);
 
-function Notification(props) {
-  const [notify, setNotify] = useState(false);
   useEffect(() => {
-    // setInterval(() => {
-    //   getMessagesUser(props.user, props.peer);
-    // }, 3000);
-    getMessagesUser(props.user, props.peer);
+    if (countNext === countPrev) {
+      setChecked(false);
+    }
   });
 
+  const handleClick = (checked) => {
+    setChecked(checked);
+    setCountPrev(countNext);
+  };
+
+  function getMessagesUser(user, pair) {
+    let groupChatId;
+    if (user === null || pair === null) {
+    } else {
+      if (hashString(user) <= hashString(pair)) {
+        groupChatId = `${user}-${pair}`;
+      } else {
+        groupChatId = `${pair}-${user}`;
+      }
+
+      myFirestore
+        .collection(AppString.MESSAGES)
+        .doc(groupChatId)
+        .collection(groupChatId)
+        .onSnapshot((doc) => {
+          if (doc.size > 0 && countPrev !== countNext) {
+            setChecked(true);
+            setCountNext(doc.size);
+          }
+        });
+    }
+  }
+
+  function hashString(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash += Math.pow(str.charCodeAt(i) * 31, str.length - i);
+      hash = hash & hash;
+    }
+    return hash;
+  }
+
   return (
-    <FontAwesomeIcon className="notifications_user_list" icon="comment-dots" />
+    <>
+      <input
+        id={currPair}
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => handleClick(e.target.checked)}
+      />
+      <FontAwesomeIcon
+        className="notifications_user_list displaynone"
+        icon="comment-dots"
+      />
+    </>
   );
 }
 
