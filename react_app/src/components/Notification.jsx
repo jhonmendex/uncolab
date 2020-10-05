@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { myFirestore } from "../config/MyFirebase";
 import { AppString } from "../config/Constants";
+import Checkbox from "@material-ui/core/Checkbox";
+import Meesage from "@material-ui/icons/Message";
+import MessageBorder from "@material-ui/icons/ChatBubbleOutline";
 
 function Notification({ currUser, currPair, initialState, messagesUser }) {
   const [checked, setChecked] = useState(initialState);
@@ -55,15 +57,18 @@ function Notification({ currUser, currPair, initialState, messagesUser }) {
 
   return (
     <>
-      <input
+      {/* <input
         id={currPair}
         type="checkbox"
         checked={checked}
         onChange={(e) => handleClick(e.target.checked)}
-      />
-      <FontAwesomeIcon
-        className="notifications_user_list displaynone"
-        icon="comment-dots"
+      /> */}
+      <Checkbox
+        id={currPair}
+        icon={<MessageBorder className="uncolabChat_notification_disable" />}
+        checkedIcon={<Meesage className="uncolabChat_notification" />}
+        checked={checked}
+        onChange={(e) => handleClick(e.target.checked)}
       />
     </>
   );
