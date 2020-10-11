@@ -57,12 +57,6 @@ function Notification({ currUser, currPair, initialState, messagesUser }) {
 
   return (
     <>
-      {/* <input
-        id={currPair}
-        type="checkbox"
-        checked={checked}
-        onChange={(e) => handleClick(e.target.checked)}
-      /> */}
       <Checkbox
         id={currPair}
         icon={<MessageBorder className="uncolabChat_notification_disable" />}

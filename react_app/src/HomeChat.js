@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactLoading from "react-loading";
 import ModalHome from "./components/ModalHome";
 import $ from "jquery";
+
 class HomeChat extends Component {
   state = {
     isloading: false,
@@ -29,6 +30,7 @@ class HomeChat extends Component {
       this.setState({ isloading: false, error: true });
     }
   };
+
   handleCloseModal = (e) => {
     this.setState({ modalIsOpen: false });
   };
