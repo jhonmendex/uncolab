@@ -21,6 +21,7 @@ def init(plugin_manager, course_factory, client, config):
     def chat_course_menu_hook(course,task, template_helper):
         return """
                 <button type="button" onclick="appendChat()" id="menu-toggle" class="btn btn-secondary"><i id="toggleIcon" class="fa-angle-double-down fa"></i> Collaboration
+                <i id="bell-notification" class="fa fa-bell"></i>
                 </button>
                 <div id="wrapper-chat" class="toggled">
                   <div id="sidebar-wrapper-chat">

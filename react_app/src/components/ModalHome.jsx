@@ -39,15 +39,22 @@ const HomeModal = (props) => {
                 subir de nivel
               </p>
             </div>
-            <Link
-              to={{
-                pathname: `/chat/${props.taskStatus}`,
-              }}
-            >
-              <button className="btn btn-primary m-2">
-                Recibir colaboración de un Programador
-              </button>
-            </Link>
+            {props.fails === 1 ? (
+              <h5 style={{ color: "red" }}>
+                Nos gustaría que realizaras otro intento antes de solicitar la
+                colaboración, envía otro submission y vuelve a abir esta ventana
+              </h5>
+            ) : (
+              <Link
+                to={{
+                  pathname: `/chat/${props.taskStatus}`,
+                }}
+              >
+                <button className="btn btn-primary m-2">
+                  Recibir colaboración de un Programador
+                </button>
+              </Link>
+            )}
           </>
         )}
         {props.error === true ||

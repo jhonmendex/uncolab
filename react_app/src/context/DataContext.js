@@ -7,14 +7,18 @@ class DataContextProvider extends React.Component {
   state = {
     programmer: null,
     getDataContext: this.getData.bind(this),
-    contador: 0,
+    evaluate: null,
   };
 
   getData() {
     setInterval(() => {
       this.getDataContext();
       this.setState({ programmer: this.state.programmer });
-    }, 5000);
+    }, 30000);
+
+    setInterval(() => {
+      this.setState({ evaluate: true });
+    }, 300000);
   }
 
   async getDataContext() {
@@ -27,7 +31,9 @@ class DataContextProvider extends React.Component {
         });
       let taskStatusUser = await fetch(url);
       let data = await taskStatusUser.json();
-      this.setState({ programmer: data.programmer });
+      this.setState({
+        programmer: data.programmer,
+      });
     } catch (error) {
       console.log(error);
     }

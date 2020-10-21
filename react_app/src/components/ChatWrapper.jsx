@@ -184,7 +184,7 @@ class ChatWrapper extends Component {
             />
           </div>
         ) : null}
-        <HeaderChat currentUser={currentUserNickname} />
+        <HeaderChat currentUser={currentUserNickname} taskState={taskState} />
         <div id="main_containerChat">
           <UserList
             currentUserId={currentUserId}

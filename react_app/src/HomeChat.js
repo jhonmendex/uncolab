@@ -8,6 +8,7 @@ class HomeChat extends Component {
     isloading: false,
     error: false,
     data: undefined,
+    fails: null,
     modalIsOpen: false,
     courseId: this.props.match.params.courseId,
     taskId: this.props.match.params.taskId,
@@ -25,7 +26,11 @@ class HomeChat extends Component {
         $.param({ course_id: this.state.courseId, task_id: this.state.taskId });
       let taskStatusUser = await fetch(url);
       let data = await taskStatusUser.json();
-      this.setState({ isloading: false, data: data.programmer });
+      this.setState({
+        isloading: false,
+        data: data.programmer,
+        fails: data.fails,
+      });
     } catch (error) {
       this.setState({ isloading: false, error: true });
     }
@@ -58,6 +63,7 @@ class HomeChat extends Component {
           isOpen={this.state.modalIsOpen}
           onClose={this.handleCloseModal}
           taskStatus={this.state.data}
+          fails={this.state.fails}
           error={this.state.error}
         ></ModalHome>
         <h1>

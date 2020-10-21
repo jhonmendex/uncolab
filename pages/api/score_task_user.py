@@ -40,4 +40,4 @@ class ScoreTaskUser(AdminApi):
             else:
                 response = 'false'
 
-        return 200, {'programmer': response}
+        return 200, {'programmer': response, 'success': success, 'fails': fails}

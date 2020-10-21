@@ -12,7 +12,18 @@ import Popper from "@material-ui/core/Popper";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { Button } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-//.MuiToggleButton-root.Mui-selected
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
+import { Link } from "react-router-dom";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const useStyles = makeStyles((theme) => ({
   ToggleButton: {
     padding: "8px",
@@ -39,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px 0px 2px 0",
   },
 
+  buttonDialog: {
+    textAlign: "center",
+  },
+
   buttonNotification: {
     width: "100%",
     color: "#000000",
@@ -57,21 +72,53 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function HeaderChat({ currentUser }) {
-  const { programmer, getDataContext, contador } = React.useContext(
+function HeaderChat({ currentUser, taskState }) {
+  const { programmer, getDataContext, evaluate } = React.useContext(
     DataContext
   );
 
   const [selected, setSelected] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const [openDialog, setOpenDialog] = React.useState(false);
+
+  const inputRef = React.useRef(null);
+
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
+
+  const btnCollaboration = window.parent.document.getElementById(
+    "bell-notification"
+  );
+
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
+
+  if (btnCollaboration) {
+    if (open) {
+      btnCollaboration.style.display = "block";
+    } else {
+      btnCollaboration.style.display = "none";
+    }
+  }
+  const handleClickOpen = () => {
+    setOpenDialog(true);
+  };
+
+  const handleClose = () => {
+    setOpenDialog(false);
+  };
+
   React.useEffect(() => {
-    if (programmer) {
-      console.log(contador);
+    if (evaluate) {
+      inputRef.current.click();
+    }
+  }, [evaluate]);
+
+  React.useEffect(() => {
+    if (programmer === "true") {
+      inputRef.current.click();
     }
   }, [programmer]);
 
@@ -91,6 +138,7 @@ function HeaderChat({ currentUser }) {
                 className={classes.ToggleButton}
                 value="check"
                 icon
+                ref={inputRef}
                 size="large"
                 selected={selected}
                 onClick={handleClick}
@@ -106,55 +154,84 @@ function HeaderChat({ currentUser }) {
               </ToggleButton>
               <Popper id={id} open={open} anchorEl={anchorEl}>
                 <List className={classes.notificationsPop}>
-                  <ListItem className={classes.myListItem}>
-                    <ListItemText
-                      className={classes.myListItemText}
-                      primary="Evalúa a un compañero"
-                      secondary="Las criticas nos ayudan a ser mejores."
-                    />
-                  </ListItem>
-                  <ListItem className={classes.myListItem}>
-                    <Button
-                      className={classes.buttonNotification}
-                      variant="contained"
-                      href="#contained-buttons"
-                      startIcon={<AssignmentIcon />}
-                    >
-                      Evaluar un compañero
-                    </Button>
-                  </ListItem>
+                  {!evaluate && (
+                    <ListItem className={classes.myListItem}>
+                      <ListItemText
+                        className={classes.myListItemText}
+                        primary="Sin notificaciones"
+                        secondary="..."
+                      />
+                    </ListItem>
+                  )}
+                  {evaluate && taskState == "true" && (
+                    <>
+                      <ListItem className={classes.myListItem}>
+                        <ListItemText
+                          className={classes.myListItemText}
+                          primary="Evalúa a un compañero"
+                          secondary="Las criticas nos ayudan a ser mejores."
+                        />
+                      </ListItem>
+                      <ListItem className={classes.myListItem}>
+                        <Button
+                          className={classes.buttonNotification}
+                          variant="contained"
+                          href="#contained-buttons"
+                          startIcon={<AssignmentIcon />}
+                        >
+                          Evaluar un compañero novato
+                        </Button>
+                      </ListItem>
+                    </>
+                  )}
+                  {evaluate && taskState === "false" && (
+                    <>
+                      <ListItem className={classes.myListItem}>
+                        <ListItemText
+                          className={classes.myListItemText}
+                          primary="Evalúa a un compañero"
+                          secondary="Las criticas nos ayudan a ser mejores."
+                        />
+                      </ListItem>
+                      <ListItem className={classes.myListItem}>
+                        <Button
+                          className={classes.buttonNotification}
+                          variant="contained"
+                          href="#contained-buttons"
+                          startIcon={<AssignmentIcon />}
+                        >
+                          Evaluar un compañero programador
+                        </Button>
+                      </ListItem>
+                    </>
+                  )}
                   <Divider
                     component="li"
                     variant="middle"
                     className={classes.myDivider}
                   />
-                  <ListItem className={classes.myListItem}>
-                    <ListItemText
-                      className={classes.myListItemText}
-                      primary="¡Felicitaciones!"
-                      secondary="Eres un programador, ya puedes ayudar a tus compañeros a subir de nivel. Antes de ayudar debes evaluar la colaboración recibida."
-                    />
-                  </ListItem>
-                  <ListItem className={classes.myListItem}>
-                    <Button
-                      className={classes.buttonNotification}
-                      variant="contained"
-                      href="#contained-buttons"
-                      startIcon={<AssignmentIcon />}
-                    >
-                      Evaluar colaboración
-                    </Button>
-
-                    <Button
-                      className={classes.buttonNotification}
-                      variant="contained"
-                      href="#contained-buttons"
-                      size="small"
-                      endIcon={<ArrowForwardIcon />}
-                    >
-                      Ayudar a un novato
-                    </Button>
-                  </ListItem>
+                  {programmer === "true" && taskState === "false" && (
+                    <>
+                      <ListItem className={classes.myListItem}>
+                        <ListItemText
+                          className={classes.myListItemText}
+                          primary="¡Felicitaciones!"
+                          secondary="Eres un programador, ya puedes ayudar a tus compañeros a subir de nivel. Antes de ayudar debes evaluar la colaboración recibida."
+                        />
+                      </ListItem>
+                      <ListItem className={classes.myListItem}>
+                        <Button
+                          className={classes.buttonNotification}
+                          variant="contained"
+                          size="small"
+                          endIcon={<ArrowForwardIcon />}
+                          onClick={handleClickOpen}
+                        >
+                          Ayudar a un novato
+                        </Button>
+                      </ListItem>
+                    </>
+                  )}
                 </List>
               </Popper>
             </div>
@@ -179,6 +256,48 @@ function HeaderChat({ currentUser }) {
           </div>
         </div>
       </div>
+      <Dialog
+        open={openDialog}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">
+          {"¡Estás a un paso de ayudar!"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Nos gustaría confirmar si ya hiciste la evaluación del programador
+            que te ayudó. Una vez confirmes podrás ayudar tu también.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Link
+            to={{
+              pathname: `/un_colab/group-5/triangle`,
+            }}
+          >
+            <Button
+              className={classes.buttonDialog}
+              href="/chat/true"
+              onClick={handleClose}
+              color="primary"
+            >
+              Ya hice la evaluación y quiero colaborar
+            </Button>
+          </Link>
+
+          <Button
+            className={classes.buttonDialog}
+            onClick={handleClose}
+            color="primary"
+          >
+            Deseo quedarme aquí y recibir más ayuda
+          </Button>
+        </DialogActions>
+      </Dialog>
     </React.Fragment>
   );
 }
