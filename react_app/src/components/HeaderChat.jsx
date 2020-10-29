@@ -176,8 +176,10 @@ function HeaderChat({ currentUser, taskState }) {
                         <Button
                           className={classes.buttonNotification}
                           variant="contained"
-                          href="#contained-buttons"
+                          href="https://docs.google.com/forms/d/1XbZ_OjwgTiDayG0GqwLpG51K8LPgHf35B_Dq8XPWT-E/edit?usp=sharing"
                           startIcon={<AssignmentIcon />}
+                          rel="noopener"
+                          target="_blank"
                         >
                           Evaluar un compañero novato
                         </Button>
@@ -197,10 +199,12 @@ function HeaderChat({ currentUser, taskState }) {
                         <Button
                           className={classes.buttonNotification}
                           variant="contained"
-                          href="#contained-buttons"
+                          target="_blank"
+                          rel="noopener"
+                          href="https://docs.google.com/forms/d/1LzpWxblYPxJElpFKsfn0m8A_pnzc71oL9NxdKcv0eCk/edit?usp=sharing"
                           startIcon={<AssignmentIcon />}
                         >
-                          Evaluar un compañero programador
+                          Evalúa la colaboración del programador
                         </Button>
                       </ListItem>
                     </>

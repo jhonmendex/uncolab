@@ -26,7 +26,7 @@ class ListMessage extends Component {
               </span>
               <div className="uncolabChat_chatboxDisplayDetails">
                 <div className="uncolabChat_userdisplayname" title="Alex">
-                  {this.props.currentPairUser.data.nickname}
+                  {this.props.currentPairUser.data.realname}
                 </div>
                 <span className="uncolabChat_userscontentdot uncolabChat_desktop"></span>
                 <div className="uncolabChat_userdisplaystatus">

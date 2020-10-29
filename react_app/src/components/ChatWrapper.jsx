@@ -49,7 +49,6 @@ class ChatWrapper extends Component {
         if (!isAdmin) {
           if (username) {
             let realname = user.userRealnameUncode;
-
             const result = await myFirestore
               .collection(AppString.USERS)
               .where(AppString.NICKNAME, "==", username)
@@ -98,8 +97,7 @@ class ChatWrapper extends Component {
           this.setState({
             isLoading: false,
             users: snap.docs.map((doc) => {
-              let totalMessages;
-              return { id: doc.id, data: doc.data(), cant: 20 };
+              return { id: doc.id, data: doc.data() };
             }),
           });
         },

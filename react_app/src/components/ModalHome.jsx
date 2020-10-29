@@ -33,18 +33,23 @@ const HomeModal = (props) => {
         {props.taskStatus === "false" && (
           <>
             <div class="alert alert-danger mr-4" role="alert">
-              <h1>¡Te falta poco para ser programador! 🙁</h1>
-              <p>
-                No te preocupes, siempre hay alguien dispuesto a ayudarte a
-                subir de nivel
-              </p>
+              {props.fails === 1 ? (
+                <h5>
+                  Intenta resolver el problema una vez más antes de solicitar la
+                  colaboración. Cuando realices otro intento vuelve a abrir esta
+                  ventana.
+                </h5>
+              ) : (
+                <>
+                  <h1>¡Te falta poco para ser programador! 🙁</h1>
+                  <p>
+                    No te preocupes, siempre hay alguien dispuesto a ayudarte a
+                    subir de nivel
+                  </p>
+                </>
+              )}
             </div>
-            {props.fails === 1 ? (
-              <h5 style={{ color: "red" }}>
-                Nos gustaría que realizaras otro intento antes de solicitar la
-                colaboración, envía otro submission y vuelve a abir esta ventana
-              </h5>
-            ) : (
+            {props.fails === 1 ? null : (
               <Link
                 to={{
                   pathname: `/chat/${props.taskStatus}`,
