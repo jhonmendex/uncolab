@@ -16,7 +16,7 @@ UNColab fue desarrollado como un componente (Plugin) de la plataforma educativa 
 
 ### Instalación local de UNColab
 
-Para implementar UNColab debe seguir los siguientes pasos:
+Para implementar UNColab se deben seguir los siguientes pasos:
 
 1. Instalar el sistema INGinious: Dependiendo del sistema operativo que utilice, siga las instrucciones dadas [aquí](https://docs.inginious.org/en/v0.5/install_doc/installation.html)
 
