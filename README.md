@@ -1,7 +1,7 @@
 # UNColab
 
-![License](https://img.shields.io/github/license/JuezUN/INGInious?style=plastic)][license_url]
-![Contributors](https://img.shields.io/github/contributors/JuezUN/INGInious?style=plastic)][contributors_url]
+[![License](https://img.shields.io/github/license/JuezUN/INGInious?style=plastic)][license_url]
+[![Contributors](https://img.shields.io/github/contributors/JuezUN/INGInious?style=plastic)][contributors_url]
 
 UNColab es un prototipo de herramienta computacional que permite apoyar la resolución de ejercicios de programación de computadores de manera colaborativa. Esta herramienta se desarrolló conforme a un guión de aprendizaje colaborativo que permitipe realizar actividades de evaluación formativa entre pares.
 
@@ -32,8 +32,9 @@ Para implementar UNColab debe seguir los siguientes pasos:
 
 5. Reiniciar el servidor local.
 
-Una vez realizados los pasos anteriores UNCode debe mostrar una interfaz como la siguiente:
-| <img src="images/UNColabimage1.png" alt="captura de pantalla UNColab" width="250" \> | <img src="images/UNColabimage2.png" alt="captura de pantalla UNColab" width="250" \> |
+###### Una vez realizados los pasos anteriores UNCode debe mostrar una interfaz como la siguiente:
+
+<img src="images/UNColabimage1.png" alt="captura de pantalla UNColab" width="250" \> | <img src="images/UNColabimage2.png" alt="captura de pantalla UNColab" width="250" \>
 
 ## Licencia
 
@@ -43,8 +44,8 @@ Distribuido bajo la licencia AGPL-3.0. Ver [licencia][license_url] para más inf
 
 En caso de preguntas técnicas, por favor envíe un correo a <jmendezl@unal.edu.co>
 
-[license_url]: https://github.com/jhonmendex/un_colab/LICENCE
-[contributors]: https://github.com/jhonmendex/un_colab/blob/master/LICENSE
+[license_url]: https://github.com/jhonmendex/un_colab/blob/master/LICENSE
+[contributors_url]: https://github.com/jhonmendex/un_colab/blob/master/LICENSE
 [mongo_url]: https://www.mongodb.com/
 [python_url]: https://www.python.org/
 [react_url]: https://es.reactjs.org/
