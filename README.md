@@ -34,7 +34,8 @@ Para implementar UNColab debe seguir los siguientes pasos:
 
 ###### Una vez realizados los pasos anteriores UNCode debe mostrar una interfaz como la siguiente:
 
-<img src="images/UNColabimage1.png" alt="captura de pantalla UNColab" width="250" \> | <img src="images/UNColabimage2.png" alt="captura de pantalla UNColab" width="250" \>
+![imagen](https://firebasestorage.googleapis.com/v0/b/un-colab-chat.appspot.com/o/UNColabimage1.png?alt=media&token=9602dbbd-8e75-4972-9cad-070e7391c934)
+![imagen](https://firebasestorage.googleapis.com/v0/b/un-colab-chat.appspot.com/o/UNColabimage2.png?alt=media&token=3c860c6d-191f-4b0a-829d-898158250494)
 
 ## Licencia
 
