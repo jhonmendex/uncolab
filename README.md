@@ -22,7 +22,7 @@ Para implementar UNColab debe seguir los siguientes pasos:
 
 2. Implementar la plataforma UNCode: para implementar UNCode en un servidor y comenzar a usarlo en sus cursos, consulte el repositorio de Implementación en el siguiente enlace: [Instalación UNCode](https://github.com/JuezUN/Deployment)
 
-3. Dentro del la carpeta `inginious/frontend/plugins` Clonar el plugin UNColab: `git clone https://github.com/jhonmendex/un_colab.git`
+3. Una vez implementado UNCode, ubicar el directorio `inginious/frontend/plugins` y clonar el plugin UNColab: `git clone https://github.com/jhonmendex/un_colab.git`
 
 4. Ubicar el archivo `configuration.yaml` dentro de la carpeta `/var/www/INGinious` y activar el plugin de la siguiente manera:
 
@@ -30,7 +30,11 @@ Para implementar UNColab debe seguir los siguientes pasos:
 - plugin_module: inginious.frontend.plugins.un_colab
 ```
 
-5. Reiniciar el servidor local.
+5. Reiniciar el servidor de aplicaciones.
+
+```
+sudo /etc/init.d/apache2 restart.
+```
 
 ###### Una vez realizados los pasos anteriores UNCode debe mostrar una interfaz como la siguiente:
 
