@@ -7,10 +7,6 @@ UNColab es un prototipo de herramienta computacional que permite apoyar la resol
 
 UNColab hace parte del desarrollo de una investigación llevada a cabo en la Universidad Nacional de Colombia en el segundo periodo del año 2020, esta investigación llevó como título: "Prototipo de herramienta computacional para el aprendizaje colaborativo de programación de computadores". La investigación se enfocó en conocer los efectos en la resolución de problemas de programación el uso de herramientas computacionales colaborativas que apoyen los procesos de evaluación formativa entre pares. Los resultados de este estudio se reflejan en un artículo publicado en la conferencia internacional de educación EDULEARN 2021. Para consultar este artículo visitar el siguiente enlace: https://library.iated.org/view/MENDEZLARA2021UNC
 
-
-¿Cuáles son los efectos en la resolución de problemas de programación de computadores el uso de una herramienta computacional colaborativa que apoye la evaluación formativa entre pares
-
-
 UNColab fue desarrollado como un componente (Plugin) de la plataforma educativa [UNCode](https://juezun.github.io/). UNCode es una plataforma en línea para la práctica frecuente y la evaluación automática de ejercicios de programación de computadores, Jupyter Notebooks y lenguaje de descripción de hardware (VHDL / Verilog). UNCode está basado en la plataforma [INGInious](https://docs.inginious.org/) que ha sido desarrollada para la calificación automática de tareas de programación. UNCode actualmente apoya la enseñanza-aprendizaje de los cursos de programación de computadores en la Universidad Nacional de Colombia sede Bogotá.
 
 
